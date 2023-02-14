@@ -1,3 +1,5 @@
+import 'package:ecommercecourse/core/constant/routes.dart';
+import 'package:ecommercecourse/data/datasource/static/static.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
@@ -15,11 +17,15 @@ class OnBoardingControlerImp extends OnBoardingController {
   @override
   next() {
     currentPage++;
-    pageController.animateToPage(
-      currentPage,
-      duration: const Duration(milliseconds: 900),
-      curve: Curves.easeInOut,
-    );
+    if (currentPage > onBoardingList.length - 1) {
+      Get.offAllNamed(AppRoute.login);
+    } else {
+      pageController.animateToPage(
+        currentPage,
+        duration: const Duration(milliseconds: 900),
+        curve: Curves.easeInOut,
+      );
+    }
   }
 
   @override
