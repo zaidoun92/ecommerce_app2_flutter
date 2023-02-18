@@ -5,6 +5,8 @@ class AppImageAsset {
   // static const onBoardingImageTwo = "$rootImages/onboardingtwo.PNG";
   // static const onBoardingImageThree = "$rootImages/onboardingthree.PNG";
   // static const onBoardingImageFour = "$rootImages/onboardingfour.PNG";
+  static const logo = "$rootImages/logo.png";
+
   static const onBoardingImageOne = "$rootImages/one.PNG";
   static const onBoardingImageTwo = "$rootImages/two.PNG";
   static const onBoardingImageThree = "$rootImages/three.PNG";
