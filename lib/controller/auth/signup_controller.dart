@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 abstract class SignUpController extends GetxController {
-  login();
+  SignUp();
   goToSignIn();
 }
 
@@ -19,7 +19,7 @@ class SignUpControllerImp extends SignUpController {
   }
 
   @override
-  login() {}
+  SignUp() {}
 
   @override
   void onInit() {
