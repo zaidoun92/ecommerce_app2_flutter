@@ -3,30 +3,33 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 abstract class ResetPasswordController extends GetxController {
-  checkemail();
-  goToVerfiyCode();
+  resetPassword();
+  goToSuccessResetPassword();
 }
 
 class ResetPasswordControllerImp extends ResetPasswordController {
-  late TextEditingController email;
+  late TextEditingController password;
+  late TextEditingController repassword;
   //
   @override
-  goToVerfiyCode() {
+  goToSuccessResetPassword() {
     Get.offNamed(AppRoute.verfiyCode);
   }
 
   @override
-  checkemail() {}
+  resetPassword() {}
 
   @override
   void onInit() {
-    email = TextEditingController();
+    password = TextEditingController();
+    repassword = TextEditingController();
     super.onInit();
   }
 
   @override
   void dispose() {
-    email.dispose();
+    password.dispose();
+    repassword.dispose();
     super.dispose();
   }
 }
