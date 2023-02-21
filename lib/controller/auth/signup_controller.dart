@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 abstract class SignUpController extends GetxController {
-  SignUp();
+  signUp();
   goToSignIn();
 }
 
@@ -19,7 +19,9 @@ class SignUpControllerImp extends SignUpController {
   }
 
   @override
-  SignUp() {}
+  signUp() {
+    Get.offNamed(AppRoute.checkEmail);
+  }
 
   @override
   void onInit() {

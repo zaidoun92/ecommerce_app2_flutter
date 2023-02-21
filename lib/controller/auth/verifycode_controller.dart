@@ -16,9 +16,4 @@ class VerifyCodeControllerImp extends VerifyCodeController {
 
   @override
   checkCode() {}
-
-  @override
-  void onInit() {
-    super.onInit();
-  }
 }

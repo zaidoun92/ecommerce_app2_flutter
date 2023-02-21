@@ -1,17 +1,20 @@
-import 'package:ecommercecourse/controller/auth/verifycode_controller.dart';
 import 'package:ecommercecourse/core/constant/color.dart';
 import 'package:ecommercecourse/view/widget/auth/customtextbodyauth.dart';
+import 'package:ecommercecourse/view/widget/auth/customtextformauth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_otp_text_field/flutter_otp_text_field.dart';
 import 'package:get/get.dart';
-import '../../widget/auth/customtexttitleauth.dart';
 
-class VeryfiyCode extends StatelessWidget {
-  const VeryfiyCode({super.key});
+import '../../../../controller/auth/forgetpassword_controller.dart';
+import '../../../widget/auth/custombuttonauth.dart';
+import '../../../widget/auth/customtexttitleauth.dart';
+
+class ForgetPassword extends StatelessWidget {
+  const ForgetPassword({super.key});
 
   @override
   Widget build(BuildContext context) {
-    VerifyCodeControllerImp controller = Get.put(VerifyCodeControllerImp());
+    ForgetPasswordControllerImp controller =
+        Get.put(ForgetPasswordControllerImp());
     //
     return Scaffold(
       appBar: AppBar(
@@ -19,7 +22,7 @@ class VeryfiyCode extends StatelessWidget {
         elevation: 0.0,
         centerTitle: true,
         title: Text(
-          "Verification Code",
+          "Forget Password",
           style: Theme.of(context)
               .textTheme
               .headline1!
@@ -30,21 +33,23 @@ class VeryfiyCode extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
         child: ListView(
           children: [
-            const CustomTextTitleAuth(text: "Check Code"),
+            const CustomTextTitleAuth(text: "Check Email"),
             const SizedBox(height: 10),
             const CustomTextBodyAuth(
-              text: "Please Enter the Digit Code Sent To Zaidoun@gmail.com",
+              text:
+                  "please Enter Your Email Address To Recive A Verification code",
             ),
             const SizedBox(height: 15),
-            OtpTextField(
-              fieldWidth: 50.0,
-              borderRadius: BorderRadius.circular(20),
-              numberOfFields: 5,
-              borderColor: const Color(0xFF512DA8),
-              showFieldAsBox: true,
-              onCodeChanged: (String code) {},
-              onSubmit: (String verificationCode) {
-                controller.goToResetPassword();
+            CustomTextFormAuth(
+              hintText: "Enter Your Email",
+              labelText: "Email",
+              iconData: Icons.email_outlined,
+              myController: controller.email,
+            ),
+            CustomButtonAuth(
+              text: "Check",
+              onPressed: () {
+                controller.goToVerfiyCode();
               },
             ),
             const SizedBox(height: 40),
