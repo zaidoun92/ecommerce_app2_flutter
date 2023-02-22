@@ -22,7 +22,7 @@ class SignUp extends StatelessWidget {
         elevation: 0.0,
         centerTitle: true,
         title: Text(
-          "Sign Up",
+          "17".tr,
           style: Theme.of(context)
               .textTheme
               .headline1!
@@ -33,39 +33,37 @@ class SignUp extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
         child: ListView(
           children: [
-            const CustomTextTitleAuth(text: "Welcome Back"),
+            const SizedBox(height: 20),
+            CustomTextTitleAuth(text: "10".tr),
             const SizedBox(height: 10),
-            const CustomTextBodyAuth(
-              text:
-                  "Sign Up With Your Email And Password OR Continue With Social Media",
-            ),
+            CustomTextBodyAuth(text: "24".tr),
             const SizedBox(height: 15),
             CustomTextFormAuth(
-              hintText: "Enter Your Username",
-              labelText: "Username",
+              hintText: "23".tr,
+              labelText: "20".tr,
               iconData: Icons.person_outline,
               myController: controller.username,
             ),
             CustomTextFormAuth(
-              hintText: "Enter Your Email",
-              labelText: "Email",
+              hintText: "12".tr,
+              labelText: "18".tr,
               iconData: Icons.email_outlined,
               myController: controller.email,
             ),
             CustomTextFormAuth(
-              hintText: "Enter Your Phone",
-              labelText: "Phone",
+              hintText: "22".tr,
+              labelText: "21".tr,
               iconData: Icons.phone_android_outlined,
               myController: controller.phone,
             ),
             CustomTextFormAuth(
-              hintText: "Enter Your Password",
-              labelText: "Password",
+              hintText: "13".tr,
+              labelText: "19".tr,
               iconData: Icons.lock_outline,
               myController: controller.password,
             ),
             CustomButtonAuth(
-              text: "Sign Up",
+              text: "17".tr,
               onPressed: () {
                 controller.signUp();
               },
@@ -74,11 +72,11 @@ class SignUp extends StatelessWidget {
               height: 30,
             ),
             CustomTextSignUpOrSignIn(
-              text: " Sign In",
+              text: "25".tr,
               onTap: () {
                 controller.goToSignIn();
               },
-              textTitle: "have an account ? ",
+              textTitle: "26".tr,
             ),
           ],
         ),
