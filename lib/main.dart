@@ -1,4 +1,3 @@
-import 'package:ecommercecourse/core/constant/color.dart';
 import 'package:ecommercecourse/core/localization/translation.dart';
 import 'package:ecommercecourse/core/services/services.dart';
 import 'package:ecommercecourse/routes.dart';

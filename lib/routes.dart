@@ -7,6 +7,7 @@ import 'package:ecommercecourse/view/screen/auth/signup.dart';
 import 'package:ecommercecourse/view/screen/auth/forgetpassword/success_resetpassword.dart';
 import 'package:ecommercecourse/view/screen/auth/success_signup.dart';
 import 'package:ecommercecourse/view/screen/auth/forgetpassword/verifycode.dart';
+import 'package:ecommercecourse/view/screen/auth/verifycodesignup.dart';
 import 'package:ecommercecourse/view/screen/onboarding.dart';
 import 'package:flutter/cupertino.dart';
 
@@ -20,6 +21,7 @@ Map<String, Widget Function(BuildContext)> routes = {
   AppRoute.successResetPassword: (context) => const SuccessResetPassword(),
   AppRoute.successSignUp: (context) => const SuccessSignUp(),
   AppRoute.checkEmail: (context) => const CheckEmail(),
+  AppRoute.verifyCodeSignUp: (context) => const VerifyCodeSignUp(),
   //OnBoarding
   AppRoute.onBoarding: (context) => const OnBoarding(),
 };
