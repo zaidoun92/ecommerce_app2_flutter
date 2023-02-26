@@ -1,5 +1,4 @@
 import 'package:ecommercecourse/core/constant/routes.dart';
-import 'package:ecommercecourse/view/screen/auth/checkemail.dart';
 import 'package:ecommercecourse/view/screen/auth/forgetpassword/forgetpassword.dart';
 import 'package:ecommercecourse/view/screen/auth/login.dart';
 import 'package:ecommercecourse/view/screen/auth/forgetpassword/resetpassword.dart';
@@ -20,7 +19,6 @@ Map<String, Widget Function(BuildContext)> routes = {
   AppRoute.verfiyCode: (context) => const VeryfiyCode(),
   AppRoute.successResetPassword: (context) => const SuccessResetPassword(),
   AppRoute.successSignUp: (context) => const SuccessSignUp(),
-  AppRoute.checkEmail: (context) => const CheckEmail(),
   AppRoute.verifyCodeSignUp: (context) => const VerifyCodeSignUp(),
   //OnBoarding
   AppRoute.onBoarding: (context) => const OnBoarding(),

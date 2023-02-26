@@ -5,6 +5,8 @@ class CustomTextFormAuth extends StatelessWidget {
   final String labelText;
   final IconData iconData;
   final TextEditingController myController;
+  final String? Function(String?) valid;
+  final bool isNumbner;
 
   const CustomTextFormAuth({
     super.key,
@@ -12,6 +14,8 @@ class CustomTextFormAuth extends StatelessWidget {
     required this.labelText,
     required this.iconData,
     required this.myController,
+    required this.valid,
+    required this.isNumbner,
   });
 
   @override
@@ -19,6 +23,10 @@ class CustomTextFormAuth extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(bottom: 20),
       child: TextFormField(
+        keyboardType: isNumbner
+            ? const TextInputType.numberWithOptions(decimal: true)
+            : TextInputType.text,
+        validator: valid,
         controller: myController,
         decoration: InputDecoration(
           hintText: hintText,
