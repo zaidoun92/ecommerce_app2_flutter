@@ -22,7 +22,7 @@ class LoginControllerImp extends LoginController {
 
   @override
   goToForgetPassword() {
-    Get.toNamed(AppRoute.forgePassword);
+    Get.offNamed(AppRoute.forgePassword);
   }
 
   @override

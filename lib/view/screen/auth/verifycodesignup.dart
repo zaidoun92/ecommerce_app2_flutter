@@ -11,8 +11,7 @@ class VerifyCodeSignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    VerifyCodeSignUpControllerImp controller =
-        Get.put(VerifyCodeSignUpControllerImp());
+    // VerifyCodeSignUpControllerImp controller = Get.put(VerifyCodeSignUpControllerImp());
     //
     return Scaffold(
       appBar: AppBar(
@@ -27,29 +26,31 @@ class VerifyCodeSignUp extends StatelessWidget {
               .copyWith(color: AppColor.grey),
         ),
       ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-        child: ListView(
-          children: [
-            const CustomTextTitleAuth(text: "Check Code"),
-            const SizedBox(height: 10),
-            const CustomTextBodyAuth(
-              text: "Please Enter the Digit Code Sent To Zaidoun@gmail.com",
-            ),
-            const SizedBox(height: 15),
-            OtpTextField(
-              fieldWidth: 50.0,
-              borderRadius: BorderRadius.circular(20),
-              numberOfFields: 5,
-              borderColor: const Color(0xFF512DA8),
-              showFieldAsBox: true,
-              onCodeChanged: (String code) {},
-              onSubmit: (String verificationCode) {
-                controller.goToSuccessSignUp();
-              },
-            ),
-            const SizedBox(height: 40),
-          ],
+      body: GetBuilder<VerifyCodeSignUpControllerImp>(
+        builder: (controller) => Container(
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+          child: ListView(
+            children: [
+              const CustomTextTitleAuth(text: "Check Code"),
+              const SizedBox(height: 10),
+              const CustomTextBodyAuth(
+                text: "Please Enter the Digit Code Sent To Zaidoun@gmail.com",
+              ),
+              const SizedBox(height: 15),
+              OtpTextField(
+                fieldWidth: 50.0,
+                borderRadius: BorderRadius.circular(20),
+                numberOfFields: 5,
+                borderColor: const Color(0xFF512DA8),
+                showFieldAsBox: true,
+                onCodeChanged: (String code) {},
+                onSubmit: (String verificationCode) {
+                  controller.goToSuccessSignUp();
+                },
+              ),
+              const SizedBox(height: 40),
+            ],
+          ),
         ),
       ),
     );

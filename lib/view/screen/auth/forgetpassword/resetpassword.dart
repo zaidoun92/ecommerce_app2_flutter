@@ -12,8 +12,8 @@ class ResetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ResetPasswordControllerImp controller =
-        Get.put(ResetPasswordControllerImp());
+    // ResetPasswordControllerImp controller =
+    //     Get.put(ResetPasswordControllerImp());
     //
     return Scaffold(
       appBar: AppBar(
@@ -28,39 +28,41 @@ class ResetPassword extends StatelessWidget {
               .copyWith(color: AppColor.grey),
         ),
       ),
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-        child: ListView(
-          children: [
-            const SizedBox(height: 20),
-            CustomTextTitleAuth(text: "35".tr),
-            const SizedBox(height: 10),
-            CustomTextBodyAuth(text: "35".tr),
-            const SizedBox(height: 15),
-            CustomTextFormAuth(
-              isNumbner: false,
-              valid: (val) {},
-              hintText: "13".tr,
-              labelText: "19".tr,
-              iconData: Icons.lock_outline,
-              myController: controller.password,
-            ),
-            CustomTextFormAuth(
-              isNumbner: false,
-              valid: (val) {},
-              hintText: "Re ${"13".tr}",
-              labelText: "19".tr,
-              iconData: Icons.lock_outline,
-              myController: controller.repassword,
-            ),
-            CustomButtonAuth(
-              text: "33".tr,
-              onPressed: () {
-                controller.goToSuccessResetPassword();
-              },
-            ),
-            const SizedBox(height: 40),
-          ],
+      body: GetBuilder<ResetPasswordControllerImp>(
+        builder: (controller) => Container(
+          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+          child: ListView(
+            children: [
+              const SizedBox(height: 20),
+              CustomTextTitleAuth(text: "35".tr),
+              const SizedBox(height: 10),
+              CustomTextBodyAuth(text: "35".tr),
+              const SizedBox(height: 15),
+              CustomTextFormAuth(
+                isNumbner: false,
+                valid: (val) {},
+                hintText: "13".tr,
+                labelText: "19".tr,
+                iconData: Icons.lock_outline,
+                myController: controller.password,
+              ),
+              CustomTextFormAuth(
+                isNumbner: false,
+                valid: (val) {},
+                hintText: "Re ${"13".tr}",
+                labelText: "19".tr,
+                iconData: Icons.lock_outline,
+                myController: controller.repassword,
+              ),
+              CustomButtonAuth(
+                text: "33".tr,
+                onPressed: () {
+                  controller.goToSuccessResetPassword();
+                },
+              ),
+              const SizedBox(height: 40),
+            ],
+          ),
         ),
       ),
     );
