@@ -14,6 +14,14 @@ class LoginControllerImp extends LoginController {
   late TextEditingController email;
   late TextEditingController password;
 
+  bool isShowPassword = true;
+
+  showPassword() {
+    isShowPassword = !isShowPassword;
+    // isShowPassword = isShowPassword == true ? false : true;
+    update();
+  }
+
   //
   @override
   goToSignUp() {

@@ -1,4 +1,3 @@
-import 'package:ecommercecourse/controller/auth/login_controller.dart';
 import 'package:get/get.dart';
 
 import 'controller/auth/forgetpassword_controller.dart';
@@ -12,7 +11,7 @@ class MyBinding extends Bindings {
   @override
   void dependencies() {
     Get.lazyPut(() => SignUpControllerImp(), fenix: true);
-    Get.lazyPut(() => LoginControllerImp(), fenix: true);
+    // Get.lazyPut(() => LoginControllerImp(), fenix: true);
     Get.lazyPut(() => VerifyCodeSignUpControllerImp(), fenix: true);
     Get.lazyPut(() => VerifyCodeControllerImp(), fenix: true);
     Get.lazyPut(() => ResetPasswordControllerImp(), fenix: true);
