@@ -14,8 +14,8 @@ class ForgetPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // ForgetPasswordControllerImp controller =
-    //     Get.put(ForgetPasswordControllerImp());
+    ForgetPasswordControllerImp controller =
+        Get.put(ForgetPasswordControllerImp());
     //
     return Scaffold(
       appBar: AppBar(
@@ -30,41 +30,43 @@ class ForgetPassword extends StatelessWidget {
               .copyWith(color: AppColor.grey),
         ),
       ),
-      body: GetBuilder<ForgetPasswordControllerImp>(
-        builder: (controller) => Container(
-          padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-          child: Form(
-            key: controller.formstate,
-            child: ListView(
-              children: [
-                CustomTextTitleAuth(text: "27".tr),
-                const SizedBox(height: 10),
-                CustomTextBodyAuth(
-                  text: "29".tr,
-                ),
-                const SizedBox(height: 15),
-                CustomTextFormAuth(
-                  isNumbner: false,
-                  valid: (val) {
-                    return validInput(val!, 5, 100, "email");
-                  },
-                  hintText: "12".tr,
-                  labelText: "18".tr,
-                  iconData: Icons.email_outlined,
-                  myController: controller.email,
-                ),
-                CustomButtonAuth(
-                  text: "30".tr,
-                  onPressed: () {
-                    controller.goToVerfiyCode();
-                  },
-                ),
-                const SizedBox(height: 40),
-              ],
-            ),
+      body:
+          // GetBuilder<ForgetPasswordControllerImp>(
+          //   builder: (controller) =>
+          Container(
+        padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+        child: Form(
+          key: controller.formstate,
+          child: ListView(
+            children: [
+              CustomTextTitleAuth(text: "27".tr),
+              const SizedBox(height: 10),
+              CustomTextBodyAuth(
+                text: "29".tr,
+              ),
+              const SizedBox(height: 15),
+              CustomTextFormAuth(
+                isNumbner: false,
+                valid: (val) {
+                  return validInput(val!, 5, 100, "email");
+                },
+                hintText: "12".tr,
+                labelText: "18".tr,
+                iconData: Icons.email_outlined,
+                myController: controller.email,
+              ),
+              CustomButtonAuth(
+                text: "30".tr,
+                onPressed: () {
+                  controller.goToVerfiyCode();
+                },
+              ),
+              const SizedBox(height: 40),
+            ],
           ),
         ),
       ),
+      // ),
     );
   }
 }
