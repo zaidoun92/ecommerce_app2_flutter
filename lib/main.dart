@@ -1,8 +1,7 @@
-import 'package:ecommercecourse/binding.dart';
+import 'package:ecommercecourse/bindings/intialbindings.dart';
 import 'package:ecommercecourse/core/localization/translation.dart';
 import 'package:ecommercecourse/core/services/services.dart';
 import 'package:ecommercecourse/routes.dart';
-import 'package:ecommercecourse/view/screen/language.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,7 +26,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       locale: controller.language,
       theme: controller.appTheme,
-      // initialBinding: MyBinding(),
+      initialBinding: InitialBindings(),
       // home: const Language(),
       // routes: routess,
       getPages: routes,
