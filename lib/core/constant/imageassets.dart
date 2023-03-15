@@ -1,5 +1,6 @@
 class AppImageAsset {
   static const String rootImages = "assets/images";
+  static const String rootLottie = "assets/lottie";
 
   // static const onBoardingImageOne = "$rootImages/onboardingone.PNG";
   // static const onBoardingImageTwo = "$rootImages/onboardingtwo.PNG";
@@ -10,4 +11,8 @@ class AppImageAsset {
   static const onBoardingImageOne = "$rootImages/one.PNG";
   static const onBoardingImageTwo = "$rootImages/two.PNG";
   static const onBoardingImageThree = "$rootImages/three.PNG";
+  static const loading = "$rootLottie/loading.json";
+  static const offline = "$rootLottie/offline.json";
+  static const noData = "$rootLottie/nodata.json";
+  static const server = "$rootLottie/server.json";
 }

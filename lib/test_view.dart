@@ -1,5 +1,6 @@
 import 'package:ecommercecourse/controller/test_controller.dart';
 import 'package:ecommercecourse/core/class/handlingdataview.dart';
+import 'package:ecommercecourse/core/constant/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -10,7 +11,10 @@ class TestView extends StatelessWidget {
   Widget build(BuildContext context) {
     Get.put(TestController());
     return Scaffold(
-      appBar: AppBar(title: const Text("Title")),
+      appBar: AppBar(
+        backgroundColor: AppColor.primaryColor,
+        title: const Text("Title"),
+      ),
       body: GetBuilder<TestController>(
         builder: (controller) {
           return HandlingDataView(
