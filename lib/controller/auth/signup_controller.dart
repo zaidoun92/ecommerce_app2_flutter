@@ -21,7 +21,7 @@ class SignUpControllerImp extends SignUpController {
   //
   SignupData signupData = SignupData(Get.find());
   List data = [];
-  late StatusRequest statusRequest;
+  StatusRequest? statusRequest;
 
   @override
   goToSignIn() {
@@ -33,6 +33,7 @@ class SignUpControllerImp extends SignUpController {
     try {
       if (formstate.currentState!.validate()) {
         statusRequest = StatusRequest.loading;
+        update();
         var response = await signupData.postData(
           username.text,
           password.text,
@@ -44,7 +45,9 @@ class SignUpControllerImp extends SignUpController {
           if (response['status'] == "success") {
             // data.addAll(response['data']);
             //
-            Get.offNamed(AppRoute.verifyCodeSignUp);
+            Get.offNamed(AppRoute.verifyCodeSignUp, arguments: {
+              "email": email.text,
+            });
           } else {
             Get.defaultDialog(
               title: "WARNING",
