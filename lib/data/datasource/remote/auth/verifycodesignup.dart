@@ -7,7 +7,7 @@ class VerifyCodeSignUpData {
   VerifyCodeSignUpData(this.crud);
 
   postData(String email, String verifycode) async {
-    var response = await crud.postData(AppLink.verifycode, {
+    var response = await crud.postData(AppLink.verifycodeSignup, {
       "email": email,
       "verifycode": verifycode,
     });

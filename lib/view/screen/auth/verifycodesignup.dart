@@ -51,7 +51,7 @@ class VerifyCodeSignUp extends StatelessWidget {
                       showFieldAsBox: true,
                       onCodeChanged: (String code) {},
                       onSubmit: (String verificationCode) {
-                        controller.goToSuccessSignUp();
+                        controller.goToSuccessSignUp(verificationCode);
                       },
                     ),
                     const SizedBox(height: 40),

@@ -7,23 +7,22 @@ import '../../core/functions/handlingdatacontroller.dart';
 
 abstract class VerifyCodeSignUpController extends GetxController {
   checkCode();
-  goToSuccessSignUp();
+  goToSuccessSignUp(String verifyCodeSignUp);
 }
 
 class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
   VerifyCodeSignUpData verifyCodeSignUpData = VerifyCodeSignUpData(Get.find());
-  late String verifycode;
 
   String? email;
   StatusRequest? statusRequest;
   //
   @override
-  goToSuccessSignUp() async {
+  goToSuccessSignUp(verifyCodeSignUp) async {
     statusRequest = StatusRequest.loading;
     update();
     var response = await verifyCodeSignUpData.postData(
       email!,
-      verifycode,
+      verifyCodeSignUp,
     );
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
