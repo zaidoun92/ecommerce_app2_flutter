@@ -1,6 +1,10 @@
 import 'package:ecommercecourse/core/constant/routes.dart';
+import 'package:ecommercecourse/data/datasource/remote/auth/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+
+import '../../core/class/statusrequest.dart';
+import '../../core/functions/handlingdatacontroller.dart';
 
 abstract class LoginController extends GetxController {
   login();
@@ -15,6 +19,9 @@ class LoginControllerImp extends LoginController {
   late TextEditingController password;
 
   bool isShowPassword = true;
+
+  StatusRequest? statusRequest;
+  LoginData loginData = LoginData(Get.find());
 
   showPassword() {
     isShowPassword = !isShowPassword;
@@ -34,12 +41,32 @@ class LoginControllerImp extends LoginController {
   }
 
   @override
-  login() {
-    var formdata = formstate.currentState;
-    if (formdata!.validate()) {
-      print("valid");
-    } else {
-      print("Not valid");
+  login() async {
+    try {
+      if (formstate.currentState!.validate()) {
+        statusRequest = StatusRequest.loading;
+        update();
+        var response = await loginData.postData(
+          password.text,
+          email.text,
+        );
+        statusRequest = handlingData(response);
+        if (StatusRequest.success == statusRequest) {
+          if (response['status'] == "success") {
+            Get.offNamed(AppRoute.homePage);
+          } else {
+            Get.defaultDialog(
+              title: "WARNING",
+              middleText: "Email Or Password Not Correct",
+            );
+            statusRequest = StatusRequest.failure;
+          }
+        }
+        update();
+      }
+    } catch (e) {
+      // ignore: avoid_print
+      print("ERROR $e");
     }
   }
 
