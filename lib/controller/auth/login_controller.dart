@@ -20,7 +20,7 @@ class LoginControllerImp extends LoginController {
 
   bool isShowPassword = true;
 
-  StatusRequest? statusRequest;
+  StatusRequest statusRequest = StatusRequest.none;
   LoginData loginData = LoginData(Get.find());
 
   showPassword() {

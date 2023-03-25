@@ -1,5 +1,5 @@
 import 'package:ecommercecourse/controller/auth/verifycodesignup_controller.dart';
-import 'package:ecommercecourse/core/class/statusrequest.dart';
+import 'package:ecommercecourse/core/class/handlingdataview.dart';
 import 'package:ecommercecourse/core/constant/color.dart';
 import 'package:ecommercecourse/view/widget/auth/customtextbodyauth.dart';
 import 'package:flutter/material.dart';
@@ -28,36 +28,34 @@ class VerifyCodeSignUp extends StatelessWidget {
         ),
       ),
       body: GetBuilder<VerifyCodeSignUpControllerImp>(
-        builder: (controller) => controller.statusRequest ==
-                StatusRequest.loading
-            ? const Center(child: Text("Loading ..."))
-            : Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                child: ListView(
-                  children: [
-                    const CustomTextTitleAuth(text: "Check Code"),
-                    const SizedBox(height: 10),
-                    const CustomTextBodyAuth(
-                      text:
-                          "Please Enter the Digit Code Sent To Zaidoun@gmail.com",
-                    ),
-                    const SizedBox(height: 15),
-                    OtpTextField(
-                      fieldWidth: 50.0,
-                      borderRadius: BorderRadius.circular(20),
-                      numberOfFields: 5,
-                      borderColor: const Color(0xFF512DA8),
-                      showFieldAsBox: true,
-                      onCodeChanged: (String code) {},
-                      onSubmit: (String verificationCode) {
-                        controller.goToSuccessSignUp(verificationCode);
-                      },
-                    ),
-                    const SizedBox(height: 40),
-                  ],
+        builder: (controller) => HandlingDataRequest(
+          statusRequest: controller.statusRequest,
+          widget: Container(
+            padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
+            child: ListView(
+              children: [
+                const CustomTextTitleAuth(text: "Check Code"),
+                const SizedBox(height: 10),
+                const CustomTextBodyAuth(
+                  text: "Please Enter the Digit Code Sent To Zaidoun@gmail.com",
                 ),
-              ),
+                const SizedBox(height: 15),
+                OtpTextField(
+                  fieldWidth: 50.0,
+                  borderRadius: BorderRadius.circular(20),
+                  numberOfFields: 5,
+                  borderColor: const Color(0xFF512DA8),
+                  showFieldAsBox: true,
+                  onCodeChanged: (String code) {},
+                  onSubmit: (String verificationCode) {
+                    controller.goToSuccessSignUp(verificationCode);
+                  },
+                ),
+                const SizedBox(height: 40),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -1,57 +1,43 @@
 import 'package:ecommercecourse/core/constant/routes.dart';
-import 'package:ecommercecourse/data/datasource/remote/auth/signup.dart';
+import 'package:ecommercecourse/data/datasource/remote/forgetpassword/checkemail.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../core/class/statusrequest.dart';
 import '../../core/functions/handlingdatacontroller.dart';
 
-abstract class SignUpController extends GetxController {
-  signUp();
-  goToSignIn();
+abstract class ForgetPasswordController extends GetxController {
+  checkemail();
 }
 
-class SignUpControllerImp extends SignUpController {
-  GlobalKey<FormState> formstate = GlobalKey<FormState>();
-  //
-  late TextEditingController username;
-  late TextEditingController email;
-  late TextEditingController phone;
-  late TextEditingController password;
-  //
-  SignupData signupData = SignupData(Get.find());
-  List data = [];
+class ForgetPasswordControllerImp extends ForgetPasswordController {
+  CheckEmailData checkEmailData = CheckEmailData(Get.find());
   StatusRequest statusRequest = StatusRequest.none;
 
-  @override
-  goToSignIn() {
-    Get.offNamed(AppRoute.login);
-  }
+  GlobalKey<FormState> formstate = GlobalKey<FormState>();
+  //
+  late TextEditingController email;
+  //
 
   @override
-  signUp() async {
+  checkemail() async {
     try {
       if (formstate.currentState!.validate()) {
         statusRequest = StatusRequest.loading;
         update();
-        var response = await signupData.postData(
-          username.text,
-          password.text,
+        var response = await checkEmailData.postData(
           email.text,
-          phone.text,
         );
         statusRequest = handlingData(response);
         if (StatusRequest.success == statusRequest) {
           if (response['status'] == "success") {
-            // data.addAll(response['data']);
-            //
-            Get.offNamed(AppRoute.verifyCodeSignUp, arguments: {
+            Get.offNamed(AppRoute.verfiyCode, arguments: {
               "email": email.text,
             });
           } else {
             Get.defaultDialog(
               title: "WARNING",
-              middleText: "Phone Number Or Email Already Exists",
+              middleText: "Email Not Found",
             );
             statusRequest = StatusRequest.failure;
           }
@@ -66,19 +52,13 @@ class SignUpControllerImp extends SignUpController {
 
   @override
   void onInit() {
-    username = TextEditingController();
     email = TextEditingController();
-    phone = TextEditingController();
-    password = TextEditingController();
     super.onInit();
   }
 
   @override
   void dispose() {
-    username.dispose();
     email.dispose();
-    phone.dispose();
-    password.dispose();
     super.dispose();
   }
 }

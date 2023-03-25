@@ -1,4 +1,4 @@
-import 'package:ecommercecourse/controller/auth/verifycode_controller.dart';
+import 'package:ecommercecourse/controller/forgetpassword/verifycode_controller.dart';
 import 'package:ecommercecourse/core/constant/color.dart';
 import 'package:ecommercecourse/view/widget/auth/customtextbodyauth.dart';
 import 'package:flutter/material.dart';
@@ -47,7 +47,7 @@ class VeryfiyCode extends StatelessWidget {
               showFieldAsBox: true,
               onCodeChanged: (String code) {},
               onSubmit: (String verificationCode) {
-                controller.goToResetPassword();
+                controller.goToResetPassword(verificationCode);
               },
             ),
             const SizedBox(height: 40),

@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
-import 'controller/auth/forgetpassword_controller.dart';
-import 'controller/auth/resetpassword_controller.dart';
+import 'controller/forgetpassword/forgetpassword_controller.dart';
+import 'controller/forgetpassword/resetpassword_controller.dart';
 import 'controller/auth/successresetpassword_controller.dart';
-import 'controller/auth/verifycode_controller.dart';
+import 'controller/forgetpassword/verifycode_controller.dart';
 import 'controller/auth/verifycodesignup_controller.dart';
 
 class MyBinding extends Bindings {

@@ -1,33 +1,35 @@
-import 'package:ecommercecourse/core/class/statusrequest.dart';
 import 'package:ecommercecourse/core/constant/routes.dart';
-import 'package:ecommercecourse/data/datasource/remote/auth/verifycodesignup.dart';
+import 'package:ecommercecourse/data/datasource/remote/forgetpassword/verifycode.dart';
 import 'package:get/get.dart';
 
+import '../../core/class/statusrequest.dart';
 import '../../core/functions/handlingdatacontroller.dart';
 
-abstract class VerifyCodeSignUpController extends GetxController {
+abstract class VerifyCodeController extends GetxController {
   checkCode();
-  goToSuccessSignUp(String verifyCodeSignUp);
+  goToResetPassword(String verifyCode);
 }
 
-class VerifyCodeSignUpControllerImp extends VerifyCodeSignUpController {
-  VerifyCodeSignUpData verifyCodeSignUpData = VerifyCodeSignUpData(Get.find());
-
+class VerifyCodeControllerImp extends VerifyCodeController {
   String? email;
   StatusRequest statusRequest = StatusRequest.none;
+  VerifyCodeForgetPasswordData verifyCodeForgetPasswordData =
+      VerifyCodeForgetPasswordData(Get.find());
   //
   @override
-  goToSuccessSignUp(verifyCodeSignUp) async {
+  goToResetPassword(verifyCode) async {
     statusRequest = StatusRequest.loading;
     update();
-    var response = await verifyCodeSignUpData.postData(
+    var response = await verifyCodeForgetPasswordData.postData(
       email!,
-      verifyCodeSignUp,
+      verifyCode,
     );
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
-        Get.offNamed(AppRoute.successSignUp);
+        Get.offNamed(AppRoute.resetPassword, arguments: {
+          'email': email,
+        });
       } else {
         Get.defaultDialog(
           title: "WARNING",
