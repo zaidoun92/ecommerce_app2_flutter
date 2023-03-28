@@ -25,7 +25,7 @@ class OnBoardingControlerImp extends OnBoardingController {
     if (currentPage > onBoardingList.length - 1) {
       ///////////////////////////////////////////////////////////
       // how to check if the user first time visit the app or not
-      myServices.sharedPreferences.setString("onboarding", "1");
+      myServices.sharedPreferences.setString("step", "1");
       ///////////////////////////////////////////////////////////
       Get.offAllNamed(AppRoute.login);
     } else {
