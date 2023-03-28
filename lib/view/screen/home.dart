@@ -1,4 +1,5 @@
 import 'package:ecommercecourse/controller/home_controller.dart';
+import 'package:ecommercecourse/core/constant/color.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -45,6 +46,48 @@ class HomePage extends StatelessWidget {
                       Icons.notifications_active_outlined,
                       size: 30,
                       color: Colors.grey[600],
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 15),
+            child: Stack(
+              children: [
+                Container(
+                  height: 150,
+                  decoration: BoxDecoration(
+                    color: AppColor.primaryColor,
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                  child: const ListTile(
+                    title: Text(
+                      "A Summer Surprise",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    ),
+                    subtitle: Text(
+                      "Cashback 20%",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 30,
+                      ),
+                    ),
+                  ),
+                ),
+                Positioned(
+                  top: -20,
+                  right: -20,
+                  child: Container(
+                    height: 160,
+                    width: 160,
+                    decoration: BoxDecoration(
+                      color: AppColor.secondColor,
+                      borderRadius: BorderRadius.circular(160),
                     ),
                   ),
                 ),
