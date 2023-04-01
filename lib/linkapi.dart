@@ -1,7 +1,16 @@
 class AppLink {
   //
   static const String server = "https://zaidountest.online/ecommerce7";
+
   //
+
+  // ===================== Images ========================//
+  static const String imagestatic =
+      "https://zaidountest.online/ecommerce7/upload";
+  static const String imageCategories = "$imagestatic/categories";
+  static const String imageItems = "$imagestatic/items";
+
+  // ===================== Test ========================//
   static const String test = "$server/test.php";
 
   // ===================== Auth ========================//

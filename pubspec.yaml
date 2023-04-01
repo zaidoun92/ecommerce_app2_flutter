@@ -78,6 +78,7 @@ dependencies:
   device_preview: ^1.1.0
   responsive_builder: ^0.6.4
   image_pickers: ^2.0.0+2
+  flutter_svg: ^1.1.6
   flutter_otp_text_field: ^1.1.1
   lottie: ^2.3.0
 
