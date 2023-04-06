@@ -8,7 +8,7 @@ import 'package:ecommercecourse/view/screen/auth/forgetpassword/success_resetpas
 import 'package:ecommercecourse/view/screen/auth/success_signup.dart';
 import 'package:ecommercecourse/view/screen/auth/forgetpassword/verifycode.dart';
 import 'package:ecommercecourse/view/screen/auth/verifycodesignup.dart';
-import 'package:ecommercecourse/view/screen/home.dart';
+import 'package:ecommercecourse/view/screen/homescreen.dart';
 import 'package:ecommercecourse/view/screen/language.dart';
 import 'package:ecommercecourse/view/screen/onboarding.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
@@ -34,7 +34,7 @@ List<GetPage<dynamic>>? routes = [
       name: AppRoute.verifyCodeSignUp, page: () => const VerifyCodeSignUp()),
   //OnBoarding
   GetPage(name: AppRoute.onBoarding, page: () => const OnBoarding()),
-  GetPage(name: AppRoute.homePage, page: () => const HomePage()),
+  GetPage(name: AppRoute.homePage, page: () => const HomeScreen()),
 ];
 
 
