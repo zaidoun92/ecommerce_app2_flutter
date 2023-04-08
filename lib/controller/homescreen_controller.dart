@@ -1,5 +1,5 @@
 import 'package:ecommercecourse/view/screen/home.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class HomeScreenController extends GetxController {
@@ -42,6 +42,13 @@ class HomeScreenControllerImp extends HomeScreenController {
     "Settings",
     "Profile",
     "Favorite",
+  ];
+
+  List iconsbuttonAppBar = [
+    Icons.home,
+    Icons.settings,
+    Icons.person,
+    Icons.favorite,
   ];
 
   //

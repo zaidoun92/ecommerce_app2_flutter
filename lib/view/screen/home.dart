@@ -1,6 +1,6 @@
 import 'package:ecommercecourse/controller/home_controller.dart';
 import 'package:ecommercecourse/core/class/handlingdataview.dart';
-import 'package:ecommercecourse/view/widget/home/customappbar.dart';
+import 'package:ecommercecourse/view/widget/customappbar.dart';
 import 'package:ecommercecourse/view/widget/home/customcarthome.dart';
 import 'package:ecommercecourse/view/widget/home/customlistcategorieshome.dart';
 import 'package:ecommercecourse/view/widget/home/customlistitemshome.dart';

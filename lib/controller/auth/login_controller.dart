@@ -86,7 +86,7 @@ class LoginControllerImp extends LoginController {
   @override
   void onInit() {
     FirebaseMessaging.instance.getToken().then((value) {
-      print(value);
+      // print(value);
       String? token = value;
     });
     email = TextEditingController();

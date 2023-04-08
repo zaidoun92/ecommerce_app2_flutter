@@ -1,18 +1,15 @@
+import 'package:ecommercecourse/controller/items_controller.dart';
 import 'package:ecommercecourse/data/model/categoriesmodel.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
-
-import '../../../controller/home_controller.dart';
 import '../../../core/constant/color.dart';
-import '../../../linkapi.dart';
 
-class CustomListCategoriesHome extends GetView<HomeControllerImp> {
-  const CustomListCategoriesHome({super.key});
+class CustomListCategoriesItems extends GetView<ItemsControllerImp> {
+  const CustomListCategoriesItems({super.key});
 
   @override
   Widget build(BuildContext context) {
-    Get.put(HomeControllerImp());
+    // Get.put(ItemsControllerImp());
 
     return SizedBox(
       height: 100,
@@ -32,7 +29,7 @@ class CustomListCategoriesHome extends GetView<HomeControllerImp> {
   }
 }
 
-class Categories extends GetView<HomeControllerImp> {
+class Categories extends GetView<ItemsControllerImp> {
   final CategorisModel categorisModel;
   final int? i;
   const Categories({super.key, required this.categorisModel, required this.i});
@@ -41,26 +38,29 @@ class Categories extends GetView<HomeControllerImp> {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        controller.goToItems(controller.categories, i!);
+        controller.changeCat(i!);
       },
       child: Column(
         children: [
-          Container(
-            decoration: BoxDecoration(
-                color: AppColor.thirdColor,
-                borderRadius: BorderRadius.circular(20)),
-            padding: const EdgeInsets.symmetric(horizontal: 10),
-            height: 70,
-            width: 70,
-            child: SvgPicture.network(
-              "${AppLink.imageCategories}/${categorisModel.categoriesImage}",
-              color: AppColor.secondColor,
+          GetBuilder<ItemsControllerImp>(
+            builder: (controller) => Container(
+              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 10),
+              decoration: controller.selectedCat == i
+                  ? const BoxDecoration(
+                      border: Border(
+                        bottom: BorderSide(
+                          width: 3,
+                          color: AppColor.primaryColor,
+                        ),
+                      ),
+                    )
+                  : null,
+              child: Text(
+                "${categorisModel.categoriesName}",
+                style: const TextStyle(fontSize: 20, color: AppColor.grey2),
+              ),
             ),
           ),
-          Text(
-            "${categorisModel.categoriesName}",
-            style: const TextStyle(fontSize: 13, color: AppColor.black),
-          )
         ],
       ),
     );

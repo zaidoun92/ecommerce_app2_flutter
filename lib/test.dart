@@ -13,7 +13,7 @@ class _TestState extends State<Test> {
 
   intialdata() async {
     res = await checkInternet();
-    print(res);
+    // print(res);
   }
 
   @override

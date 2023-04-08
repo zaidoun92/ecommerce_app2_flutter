@@ -23,7 +23,7 @@ class CustomButtomAppBarHome extends StatelessWidget {
                     ? const Spacer()
                     : CustomButtonAppBar(
                         textButton: controller.titlebottomappbar[i],
-                        icondata: Icons.home,
+                        icondata: controller.iconsbuttonAppBar[i],
                         onPressed: () {
                           controller.changePage(i);
                         },
