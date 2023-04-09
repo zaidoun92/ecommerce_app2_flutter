@@ -6,7 +6,7 @@ import '../core/functions/handlingdatacontroller.dart';
 
 abstract class ItemsController extends GetxController {
   intialData();
-  changeCat(int val);
+  changeCat(int val, String catval);
   getItems(String categoryid);
 }
 
@@ -33,13 +33,16 @@ class ItemsControllerImp extends ItemsController {
   }
 
   @override
-  changeCat(val) {
+  changeCat(val, catval) {
     selectedCat = val;
+    catid = catval;
+    getItems(catid!);
     update();
   }
 
   @override
   getItems(categoryid) async {
+    data.clear();
     statusRequest = StatusRequest.loading;
     var response = await itemsData.getData(categoryid);
     statusRequest = handlingData(response);
