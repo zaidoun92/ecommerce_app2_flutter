@@ -27,4 +27,6 @@ class AppLink {
 
   // ===================== Home ========================//
   static const String homePage = "$server/home.php";
+  // ===================== Items ========================//
+  static const String items = "$server/items/items.php";
 }
