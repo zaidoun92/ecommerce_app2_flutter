@@ -1,3 +1,4 @@
+import 'package:ecommercecourse/core/functions/translatedatabase.dart';
 import 'package:ecommercecourse/data/model/categoriesmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -59,7 +60,7 @@ class Categories extends GetView<HomeControllerImp> {
             ),
           ),
           Text(
-            "${categorisModel.categoriesName}",
+            "${translateDatabase(categorisModel.categoriesNameAr, categorisModel.categoriesName)}",
             style: const TextStyle(fontSize: 13, color: AppColor.black),
           )
         ],

@@ -24,9 +24,11 @@ class HomeControllerImp extends HomeController {
 
   String? username;
   String? id;
+  String? lang;
 
   @override
   initialData() {
+    lang = myServices.sharedPreferences.getString("lang");
     username = myServices.sharedPreferences.getString("username");
     id = myServices.sharedPreferences.getString("id");
   }

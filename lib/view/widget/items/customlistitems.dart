@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommercecourse/core/functions/translatedatabase.dart';
 import 'package:ecommercecourse/data/model/itemsmodel.dart';
 import 'package:flutter/material.dart';
 import '../../../core/constant/color.dart';
@@ -26,7 +27,7 @@ class CustomListItems extends StatelessWidget {
                 height: 10,
               ),
               Text(
-                "${itemsModel.itemsName}",
+                "${translateDatabase(itemsModel.itemsNameAr, itemsModel.itemsName)}",
                 style: const TextStyle(
                   color: AppColor.black,
                   fontSize: 16,

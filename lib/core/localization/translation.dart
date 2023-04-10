@@ -48,6 +48,9 @@ class MyTranslation extends Translations {
           "40": "هل تريد الخروج من التطبيق",
           "41": "تأكيد",
           "42": "خروج",
+          "43": "الاقسام",
+          "44": "منتج لك",
+          "45": "العروض",
         },
         "en": {
           "1": "Choose Language",
@@ -96,6 +99,9 @@ class MyTranslation extends Translations {
           "40": "Do You Wana exit from the application",
           "41": "Confirm",
           "42": "Cancel",
+          "43": "Categories",
+          "44": "Product for you",
+          "45": "Offer",
         },
       };
 }

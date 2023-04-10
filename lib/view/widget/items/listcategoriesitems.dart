@@ -3,6 +3,7 @@ import 'package:ecommercecourse/data/model/categoriesmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/constant/color.dart';
+import '../../../core/functions/translatedatabase.dart';
 
 class CustomListCategoriesItems extends GetView<ItemsControllerImp> {
   const CustomListCategoriesItems({super.key});
@@ -56,7 +57,7 @@ class Categories extends GetView<ItemsControllerImp> {
                     )
                   : null,
               child: Text(
-                "${categorisModel.categoriesName}",
+                "${translateDatabase(categorisModel.categoriesNameAr, categorisModel.categoriesName)}",
                 style: const TextStyle(fontSize: 20, color: AppColor.grey2),
               ),
             ),

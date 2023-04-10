@@ -16,19 +16,19 @@ class Items extends StatelessWidget {
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.all(15),
-        child: GetBuilder<ItemsControllerImp>(
-          builder: (controller) => HandlingDataView(
-            statusRequest: controller.statusRequest,
-            widget: ListView(
-              children: [
-                CustomAppBar(
-                  titleappbar: "find Product",
-                  onPressedIcon: () {},
-                  onPressedSearch: () {},
-                ),
-                const SizedBox(height: 20),
-                const CustomListCategoriesItems(),
-                GridView.builder(
+        child: ListView(
+          children: [
+            CustomAppBar(
+              titleappbar: "find Product",
+              onPressedIcon: () {},
+              onPressedSearch: () {},
+            ),
+            const SizedBox(height: 20),
+            const CustomListCategoriesItems(),
+            GetBuilder<ItemsControllerImp>(
+              builder: (controller) => HandlingDataView(
+                statusRequest: controller.statusRequest,
+                widget: GridView.builder(
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: controller.data.length,
@@ -44,9 +44,9 @@ class Items extends StatelessWidget {
                     );
                   },
                 ),
-              ],
+              ),
             ),
-          ),
+          ],
         ),
       ),
     );
