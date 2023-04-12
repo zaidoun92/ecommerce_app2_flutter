@@ -1,9 +1,11 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ecommercecourse/controller/productdetails_controller.dart';
 import 'package:ecommercecourse/core/constant/color.dart';
-import 'package:ecommercecourse/linkapi.dart';
+import 'package:ecommercecourse/view/widget/productdetails/priceandcount.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import '../widget/productdetails/subitemslist.dart';
+import '../widget/productdetails/toppageproductdetails.dart';
 
 class ProductDetails extends StatelessWidget {
   const ProductDetails({super.key});
@@ -33,34 +35,7 @@ class ProductDetails extends StatelessWidget {
       ),
       body: ListView(
         children: [
-          Stack(
-            clipBehavior: Clip.none,
-            children: [
-              Container(
-                height: 180,
-                decoration: const BoxDecoration(
-                  color: AppColor.secondColor,
-                  // borderRadius: BorderRadius.vertical(
-                  //   bottom: Radius.circular(20),
-                  // ),
-                ),
-              ),
-              Positioned(
-                top: 30.0,
-                left: Get.width / 8,
-                right: Get.width / 8,
-                child: Hero(
-                  tag: "${controller.itemsModel.itemsId}",
-                  child: CachedNetworkImage(
-                    imageUrl:
-                        "${AppLink.imageItems}/${controller.itemsModel.itemsImage!}",
-                    height: 250,
-                    fit: BoxFit.fill,
-                  ),
-                ),
-              ),
-            ],
-          ),
+          const TopProductPageDetails(),
           const SizedBox(height: 100),
           Container(
             padding: const EdgeInsets.all(20),
@@ -73,6 +48,13 @@ class ProductDetails extends StatelessWidget {
                       .textTheme
                       .headline1!
                       .copyWith(color: AppColor.fourthColor),
+                ),
+                const SizedBox(height: 10),
+                PriceAndCount(
+                  onAdd: () {},
+                  count: "2",
+                  price: "20.0",
+                  onRemove: () {},
                 ),
                 const SizedBox(height: 10),
                 Text(
@@ -88,65 +70,7 @@ class ProductDetails extends StatelessWidget {
                       .copyWith(color: AppColor.fourthColor),
                 ),
                 const SizedBox(height: 10),
-                Row(
-                  children: [
-                    Container(
-                      margin: const EdgeInsets.only(right: 10),
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.only(bottom: 5),
-                      height: 60,
-                      width: 90,
-                      decoration: BoxDecoration(
-                        color: AppColor.fourthColor,
-                        border: Border.all(color: AppColor.fourthColor),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Text(
-                        "Red",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(right: 10),
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.only(bottom: 5),
-                      height: 60,
-                      width: 90,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: AppColor.fourthColor),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Text(
-                        "Black",
-                        style: TextStyle(
-                          color: AppColor.fourthColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                    Container(
-                      margin: const EdgeInsets.only(right: 10),
-                      alignment: Alignment.center,
-                      padding: const EdgeInsets.only(bottom: 5),
-                      height: 60,
-                      width: 90,
-                      decoration: BoxDecoration(
-                        border: Border.all(color: AppColor.fourthColor),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Text(
-                        "Blue",
-                        style: TextStyle(
-                          color: AppColor.fourthColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                const SubItemsList(),
               ],
             ),
           ),
