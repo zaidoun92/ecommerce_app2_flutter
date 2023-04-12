@@ -12,6 +12,7 @@ import 'package:ecommercecourse/view/screen/homescreen.dart';
 import 'package:ecommercecourse/view/screen/items.dart';
 import 'package:ecommercecourse/view/screen/language.dart';
 import 'package:ecommercecourse/view/screen/onboarding.dart';
+import 'package:ecommercecourse/view/screen/productdetails.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 
 List<GetPage<dynamic>>? routes = [
@@ -19,7 +20,7 @@ List<GetPage<dynamic>>? routes = [
     MyMiddleWare(),
   ]),
 
-  // GetPage(name: "/", page: () => const TestView()),
+  // GetPage(name: "/", page: () => const ProductDetails()),
 
   // Auth
   GetPage(name: AppRoute.login, page: () => const Login()),
@@ -35,9 +36,10 @@ List<GetPage<dynamic>>? routes = [
       name: AppRoute.verifyCodeSignUp, page: () => const VerifyCodeSignUp()),
   //OnBoarding
   GetPage(name: AppRoute.onBoarding, page: () => const OnBoarding()),
-  //
+  // Home
   GetPage(name: AppRoute.homePage, page: () => const HomeScreen()),
   GetPage(name: AppRoute.items, page: () => const Items()),
+  GetPage(name: AppRoute.productDetails, page: () => const ProductDetails()),
 ];
 
 
