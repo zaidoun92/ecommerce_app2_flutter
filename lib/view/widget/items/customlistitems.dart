@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommercecourse/controller/favorite_controller.dart';
 import 'package:ecommercecourse/controller/items_controller.dart';
 import 'package:ecommercecourse/core/functions/translatedatabase.dart';
 import 'package:ecommercecourse/data/model/itemsmodel.dart';
@@ -9,11 +10,11 @@ import '../../../linkapi.dart';
 
 class CustomListItems extends GetView<ItemsControllerImp> {
   final ItemsModel itemsModel;
-  final bool active;
+  // final bool active;
   const CustomListItems({
     super.key,
     required this.itemsModel,
-    required this.active,
+    // required this.active,
   });
 
   @override
@@ -79,13 +80,23 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                         fontWeight: FontWeight.bold,
                         fontFamily: "sans"),
                   ),
-                  IconButton(
-                    onPressed: () {},
-                    icon: Icon(
-                      active == true
-                          ? Icons.favorite
-                          : Icons.favorite_border_outlined,
-                      color: AppColor.primaryColor,
+                  GetBuilder<FavoriteController>(
+                    builder: (controller) => IconButton(
+                      onPressed: () {
+                        if (controller.isFavorite[itemsModel.itemsId] == "1") {
+                          controller.setFavorite(itemsModel.itemsId, "0");
+                          controller.removeFavorite(itemsModel.itemsId!);
+                        } else {
+                          controller.setFavorite(itemsModel.itemsId, "1");
+                          controller.addFavorite(itemsModel.itemsId!);
+                        }
+                      },
+                      icon: Icon(
+                        controller.isFavorite[itemsModel.itemsId] == "1"
+                            ? Icons.favorite
+                            : Icons.favorite_border_outlined,
+                        color: AppColor.primaryColor,
+                      ),
                     ),
                   ),
                 ],

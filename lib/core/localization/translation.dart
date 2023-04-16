@@ -51,6 +51,9 @@ class MyTranslation extends Translations {
           "43": "الاقسام",
           "44": "منتج لك",
           "45": "العروض",
+          "46": "اشعار",
+          "47": "تم اضافة المنتج الى المفظلة",
+          "48": "تم حذف المنتج من المفظلة",
         },
         "en": {
           "1": "Choose Language",
@@ -102,6 +105,9 @@ class MyTranslation extends Translations {
           "43": "Categories",
           "44": "Product for you",
           "45": "Offer",
+          "46": "notice",
+          "47": "The product has been added to the wishlist",
+          "48": "The product has been removed from the wishlist",
         },
       };
 }
