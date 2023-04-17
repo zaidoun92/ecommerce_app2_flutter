@@ -64,10 +64,3 @@ class FavoriteController extends GetxController {
     }
   }
 }
-
-// class FavoriteControllerImp extends FavoriteController {
-//   @override
-//   void onInit() {
-//     super.onInit();
-//   }
-// }

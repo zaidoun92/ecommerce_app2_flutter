@@ -1,5 +1,6 @@
 import 'package:ecommercecourse/controller/home_controller.dart';
 import 'package:ecommercecourse/core/class/handlingdataview.dart';
+import 'package:ecommercecourse/core/constant/routes.dart';
 import 'package:ecommercecourse/view/widget/customappbar.dart';
 import 'package:ecommercecourse/view/widget/home/customcarthome.dart';
 import 'package:ecommercecourse/view/widget/home/customlistcategorieshome.dart';
@@ -22,9 +23,13 @@ class HomePage extends StatelessWidget {
           child: ListView(
             children: [
               CustomAppBar(
-                  titleappbar: "find Product",
-                  onPressedIcon: () {},
-                  onPressedSearch: () {}),
+                titleappbar: "find Product",
+                onPressedIcon: () {},
+                onPressedSearch: () {},
+                onPressedIconFavorite: () {
+                  Get.toNamed(AppRoute.myfavorite);
+                },
+              ),
               const CustomCartHome(
                   title: "A Summer Surprise", body: "Cashback 20%"),
               CustomTitleHome(title: "43".tr),
