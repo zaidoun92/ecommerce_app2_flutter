@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../core/constant/routes.dart';
 import '../widget/customappbar.dart';
+import '../widget/myfavorite/customlistfavoriteitems.dart';
 
 class MyFavorite extends StatelessWidget {
   const MyFavorite({super.key});
@@ -25,6 +26,7 @@ class MyFavorite extends StatelessWidget {
                   Get.toNamed(AppRoute.myfavorite);
                 },
               ),
+              const SizedBox(height: 20),
               HandlingDataView(
                 statusRequest: controller.statusRequest,
                 widget: GridView.builder(
@@ -32,9 +34,12 @@ class MyFavorite extends StatelessWidget {
                   physics: const NeverScrollableScrollPhysics(),
                   itemCount: controller.data.length,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
+                    crossAxisCount: 2,
+                    childAspectRatio: 0.7,
+                  ),
                   itemBuilder: (context, index) {
-                    return Text(controller.data[index].itemsName!);
+                    return CustomFavoriteListItems(
+                        itemsModel: controller.data[index]);
                   },
                 ),
               ),
