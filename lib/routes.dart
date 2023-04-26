@@ -18,9 +18,7 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'view/screen/myfavorite.dart';
 
 List<GetPage<dynamic>>? routes = [
-  GetPage(name: "/", page: () => const Language(), middlewares: [
-    MyMiddleWare(),
-  ]),
+  GetPage(name: "/", page: () => const Language()),
 
   // GetPage(name: "/", page: () => const ProductDetails()),
 

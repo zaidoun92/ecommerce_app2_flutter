@@ -23,7 +23,6 @@ class FavoriteController extends GetxController {
   ////////////////////////////////////////////////////////
 
   addFavorite(String itemsId) async {
-    isFavorite.clear();
     statusRequest = StatusRequest.loading;
     var response = await favoriteData.addFavorite(
         myServices.sharedPreferences.getString("id")!, itemsId);
