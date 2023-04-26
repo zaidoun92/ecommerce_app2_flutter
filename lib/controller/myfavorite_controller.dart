@@ -16,6 +16,7 @@ class MyFavoriteController extends GetxController {
   ////////////////////////////////////////////////////////
 
   getData() async {
+    data.clear();
     statusRequest = StatusRequest.loading;
     var response = await favoriteData
         .getData(myServices.sharedPreferences.getString("id")!);
@@ -24,13 +25,22 @@ class MyFavoriteController extends GetxController {
       if (response['status'] == "success") {
         List responseData = response['data'];
         data.addAll(responseData.map((e) => MyFavoriteModel.fromJson(e)));
-
-        print("data");
-        print(data);
       } else {
         statusRequest = StatusRequest.failure;
       }
     }
+    update();
+  }
+
+  /////////////////////////////////////////////////////////
+  /// Delete Data From Favorite Table
+  ////////////////////////////////////////////////////////
+
+  deleteFromFavorite(String favoriteid) {
+    var response = favoriteData.deleteData(favoriteid);
+
+    data.removeWhere((element) => element.favoriteId == favoriteid);
+
     update();
   }
 

@@ -1,11 +1,13 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommercecourse/controller/myfavorite_controller.dart';
 import 'package:ecommercecourse/core/functions/translatedatabase.dart';
 import 'package:ecommercecourse/data/model/myfavoritemodel.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../../core/constant/color.dart';
 import '../../../linkapi.dart';
 
-class CustomFavoriteListItems extends StatelessWidget {
+class CustomFavoriteListItems extends GetView<MyFavoriteController> {
   final MyFavoriteModel itemsModel;
   // final bool active;
   const CustomFavoriteListItems({
@@ -78,7 +80,9 @@ class CustomFavoriteListItems extends StatelessWidget {
                         fontFamily: "sans"),
                   ),
                   IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      controller.deleteFromFavorite(itemsModel.favoriteId!);
+                    },
                     icon: const Icon(
                       Icons.delete_outline_outlined,
                       color: AppColor.primaryColor,
