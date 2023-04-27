@@ -1,4 +1,5 @@
 import 'package:ecommercecourse/view/screen/home.dart';
+import 'package:ecommercecourse/view/screen/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -27,28 +28,15 @@ class HomeScreenControllerImp extends HomeScreenController {
         ),
       ],
     ),
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        Center(
-          child: Text("Favorite"),
-        ),
-      ],
-    ),
+    const Settings(),
   ];
 
-  List titlebottomappbar = [
-    "home",
-    "Settings",
-    "Profile",
-    "Favorite",
-  ];
-
-  List iconsbuttonAppBar = [
-    Icons.home,
-    Icons.settings,
-    Icons.person,
-    Icons.favorite,
+///////////////////////////////////////////////////
+  List bottomappbar = [
+    {"title": "home", "icon": Icons.home},
+    {"title": "n", "icon": Icons.notifications_active_outlined},
+    {"title": "Profile", "icon": Icons.person_pin_sharp},
+    {"title": "Settings", "icon": Icons.settings},
   ];
 
   //

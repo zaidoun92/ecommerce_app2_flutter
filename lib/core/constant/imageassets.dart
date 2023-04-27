@@ -15,4 +15,6 @@ class AppImageAsset {
   static const offline = "$rootLottie/offline.json";
   static const noData = "$rootLottie/nodata.json";
   static const server = "$rootLottie/server.json";
+
+  static const String avatar = "$rootImages/avatar.png";
 }
