@@ -62,15 +62,15 @@ class ProductDetails extends StatelessWidget {
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
                 const SizedBox(height: 10),
-                Text(
-                  "Color",
-                  style: Theme.of(context)
-                      .textTheme
-                      .headline1!
-                      .copyWith(color: AppColor.fourthColor),
-                ),
-                const SizedBox(height: 10),
-                const SubItemsList(),
+                // Text(
+                //   "Color",
+                //   style: Theme.of(context)
+                //       .textTheme
+                //       .headline1!
+                //       .copyWith(color: AppColor.fourthColor),
+                // ),
+                // const SizedBox(height: 10),
+                // const SubItemsList(),
               ],
             ),
           ),

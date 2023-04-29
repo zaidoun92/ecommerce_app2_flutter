@@ -1,3 +1,4 @@
+import 'package:ecommercecourse/controller/settings_controller.dart';
 import 'package:ecommercecourse/core/constant/color.dart';
 import 'package:ecommercecourse/core/constant/imageassets.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ class Settings extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SettingsController controller = Get.put(SettingsController());
     return Container(
       child: ListView(
         children: [
@@ -42,17 +44,36 @@ class Settings extends StatelessWidget {
             child: Card(
               child: Column(
                 mainAxisSize: MainAxisSize.min,
-                children: const [
+                children: [
                   ListTile(
-                    title: Text('title one'),
+                    // onTap: () {},
+                    title: const Text('Disable Notification'),
+                    trailing: Switch(
+                      value: true,
+                      onChanged: (value) {},
+                    ),
                   ),
-                  Divider(),
                   ListTile(
-                    title: Text('title one'),
+                    onTap: () {},
+                    title: const Text('Address'),
+                    trailing: const Icon(Icons.location_on_outlined),
                   ),
-                  Divider(),
                   ListTile(
-                    title: Text('title one'),
+                    onTap: () {},
+                    title: const Text('About us'),
+                    trailing: const Icon(Icons.help_outline_rounded),
+                  ),
+                  ListTile(
+                    onTap: () {},
+                    title: const Text('Contact us'),
+                    trailing: const Icon(Icons.phone_callback_outlined),
+                  ),
+                  ListTile(
+                    onTap: () {
+                      controller.logout();
+                    },
+                    title: const Text('Logout'),
+                    trailing: const Icon(Icons.exit_to_app),
                   ),
                 ],
               ),
