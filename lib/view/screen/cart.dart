@@ -61,14 +61,23 @@ class Cart extends StatelessWidget {
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: const Text(
                     "Total Price",
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColor.primaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: const Text(
                     "1500 \$",
-                    style: TextStyle(fontSize: 16),
+                    style: TextStyle(
+                      fontSize: 16,
+                      color: AppColor.primaryColor,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "sans",
+                    ),
                   ),
                 ),
               ],
@@ -108,7 +117,21 @@ class Cart extends StatelessWidget {
               ],
             ),
           ),
-          Padding(
+          const SizedBox(height: 10),
+          Container(
+            padding: const EdgeInsets.only(bottom: 5),
+            margin: const EdgeInsets.symmetric(horizontal: 20),
+            decoration: BoxDecoration(
+              color: AppColor.primaryColor,
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: const Text(
+              "You Have 2 Items in Your Cart",
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+          Container(
             padding: const EdgeInsets.all(10),
             child: Column(
               children: [
