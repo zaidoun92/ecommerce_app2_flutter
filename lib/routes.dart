@@ -8,6 +8,7 @@ import 'package:ecommercecourse/view/screen/auth/forgetpassword/success_resetpas
 import 'package:ecommercecourse/view/screen/auth/success_signup.dart';
 import 'package:ecommercecourse/view/screen/auth/forgetpassword/verifycode.dart';
 import 'package:ecommercecourse/view/screen/auth/verifycodesignup.dart';
+import 'package:ecommercecourse/view/screen/cart.dart';
 import 'package:ecommercecourse/view/screen/homescreen.dart';
 import 'package:ecommercecourse/view/screen/items.dart';
 import 'package:ecommercecourse/view/screen/language.dart';
@@ -18,10 +19,10 @@ import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'view/screen/myfavorite.dart';
 
 List<GetPage<dynamic>>? routes = [
-  GetPage(
-      name: "/", page: () => const Language(), middlewares: [MyMiddleWare()]),
+  // GetPage(
+  //     name: "/", page: () => const Language(), middlewares: [MyMiddleWare()]),
 
-  // GetPage(name: "/", page: () => const ProductDetails()),
+  GetPage(name: "/", page: () => const Cart()),
 
   // Auth
   GetPage(name: AppRoute.login, page: () => const Login()),
@@ -42,6 +43,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.items, page: () => const Items()),
   GetPage(name: AppRoute.productDetails, page: () => const ProductDetails()),
   GetPage(name: AppRoute.myfavorite, page: () => const MyFavorite()),
+  GetPage(name: AppRoute.cart, page: () => const Cart()),
 ];
 
 
