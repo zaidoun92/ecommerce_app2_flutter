@@ -51,14 +51,20 @@ class ProductDetails extends StatelessWidget {
                 ),
                 const SizedBox(height: 10),
                 PriceAndCount(
-                  onAdd: () {},
+                  onAdd: () {
+                    controller.cartController
+                        .add(controller.itemsModel.itemsId!);
+                  },
                   count: "2",
-                  price: "20.0",
-                  onRemove: () {},
+                  price: "${controller.itemsModel.itemsPrice}",
+                  onRemove: () {
+                    controller.cartController
+                        .dalete(controller.itemsModel.itemsId!);
+                  },
                 ),
                 const SizedBox(height: 10),
                 Text(
-                  "${controller.itemsModel.itemsDesc} ${controller.itemsModel.itemsDesc} ${controller.itemsModel.itemsDesc} ${controller.itemsModel.itemsDesc}",
+                  "${controller.itemsModel.itemsDesc}",
                   style: Theme.of(context).textTheme.bodyText1,
                 ),
                 const SizedBox(height: 10),

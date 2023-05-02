@@ -36,4 +36,8 @@ class AppLink {
   static const String favoriteView = "$server/favorite/view.php";
   static const String deletefromfavorite =
       "$server/favorite/deletefromfavorite.php";
+  // ===================== Items ========================//
+  static const String cartview = "$server/cart/view.php";
+  static const String cartadd = "$server/cart/add.php";
+  static const String cartdelete = "$server/cart/remove.php";
 }

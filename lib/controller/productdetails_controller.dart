@@ -1,9 +1,13 @@
+import 'package:ecommercecourse/controller/cart_controller.dart';
 import 'package:ecommercecourse/data/model/itemsmodel.dart';
 import 'package:get/get.dart';
 
 abstract class ProductDetatilsController extends GetxController {}
 
 class ProductDetatilsControllerImp extends ProductDetatilsController {
+  //
+  CartController cartController = Get.put(CartController());
+  //
   late ItemsModel itemsModel;
 
   intialData() {
