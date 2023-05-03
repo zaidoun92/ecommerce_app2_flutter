@@ -17,4 +17,10 @@ class CartData {
         .postData(AppLink.cartdelete, {"usersid": usersid, "itemsid": itemsid});
     return response.fold((l) => l, (r) => r);
   }
+
+  getCountCart(String usersid, String itemsid) async {
+    var response = await crud.postData(
+        AppLink.cartgetcountitems, {"usersid": usersid, "itemsid": itemsid});
+    return response.fold((l) => l, (r) => r);
+  }
 }

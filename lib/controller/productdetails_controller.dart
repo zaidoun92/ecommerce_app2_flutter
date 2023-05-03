@@ -1,4 +1,5 @@
 import 'package:ecommercecourse/controller/cart_controller.dart';
+import 'package:ecommercecourse/core/class/statusrequest.dart';
 import 'package:ecommercecourse/data/model/itemsmodel.dart';
 import 'package:get/get.dart';
 
@@ -10,8 +11,16 @@ class ProductDetatilsControllerImp extends ProductDetatilsController {
   //
   late ItemsModel itemsModel;
 
-  intialData() {
+  late StatusRequest statusRequest;
+
+  int countItems = 0;
+
+  intialData() async {
+    statusRequest = StatusRequest.loading;
     itemsModel = Get.arguments['itemsmodel'];
+    countItems = await cartController.getCountItems(itemsModel.itemsId!);
+    statusRequest = StatusRequest.success;
+    update();
   }
 
   List subItems = [

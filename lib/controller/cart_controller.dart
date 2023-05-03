@@ -22,7 +22,7 @@ class CartController extends GetxController {
       if (response['status'] == "success") {
         Get.rawSnackbar(
           title: "46".tr,
-          messageText: Text("47".tr),
+          messageText: Text("49".tr),
         );
         // data.addAll(response['data']);
       } else {
@@ -43,9 +43,31 @@ class CartController extends GetxController {
       if (response['status'] == "success") {
         Get.rawSnackbar(
           title: "46".tr,
-          messageText: Text("48".tr),
+          messageText: Text("50".tr),
         );
         // data.addAll(response['data']);
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+    }
+  }
+
+  /////////////////////////////////////////////////////////
+  /// Cart Get Count Function
+  ////////////////////////////////////////////////////////
+
+  getCountItems(String itemsId) async {
+    statusRequest = StatusRequest.loading;
+    var response = await cartData.getCountCart(
+        myServices.sharedPreferences.getString("id")!, itemsId);
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        int countitems = 0;
+        countitems = int.parse(response['data']);
+        // print("==================================");
+        // print("$countitems");
+        return countitems;
       } else {
         statusRequest = StatusRequest.failure;
       }
