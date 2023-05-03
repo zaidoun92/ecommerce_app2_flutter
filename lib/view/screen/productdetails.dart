@@ -53,14 +53,12 @@ class ProductDetails extends StatelessWidget {
                     const SizedBox(height: 10),
                     PriceAndCount(
                       onAdd: () {
-                        controller.cartController
-                            .add(controller.itemsModel.itemsId!);
+                        controller.add();
                       },
                       count: "${controller.countItems}",
                       price: "${controller.itemsModel.itemsPrice}",
                       onRemove: () {
-                        controller.cartController
-                            .dalete(controller.itemsModel.itemsId!);
+                        controller.remove();
                       },
                     ),
                     const SizedBox(height: 10),

@@ -29,6 +29,20 @@ class ProductDetatilsControllerImp extends ProductDetatilsController {
     {"name": "black", "id": 3, "active": '1'},
   ];
 
+  add() {
+    cartController.add(itemsModel.itemsId!);
+    countItems++;
+    update();
+  }
+
+  remove() {
+    if (countItems > 0) {
+      cartController.dalete(itemsModel.itemsId!);
+      countItems--;
+      update();
+    }
+  }
+
   @override
   void onInit() {
     intialData();
