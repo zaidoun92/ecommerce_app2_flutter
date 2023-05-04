@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class TopAppBarCart extends StatelessWidget {
-  final void Function()? onPressed;
+  // final void Function()? onPressed;
   final String title;
   const TopAppBarCart({
     super.key,
     required this.title,
-    this.onPressed,
+    // this.onPressed,
   });
 
   @override
@@ -19,7 +20,9 @@ class TopAppBarCart extends StatelessWidget {
             child: Container(
               alignment: Alignment.centerLeft,
               child: IconButton(
-                onPressed: onPressed,
+                onPressed: () {
+                  Get.back();
+                },
                 icon: const Icon(Icons.arrow_back),
               ),
             ),

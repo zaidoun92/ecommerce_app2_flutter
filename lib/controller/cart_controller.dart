@@ -1,4 +1,5 @@
 import 'package:ecommercecourse/data/datasource/remote/cart_data.dart';
+import 'package:ecommercecourse/data/model/cartmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../core/class/statusrequest.dart';
@@ -9,6 +10,10 @@ class CartController extends GetxController {
   CartData cartData = CartData(Get.find());
   late StatusRequest statusRequest;
   MyServices myServices = Get.find();
+  List<CartModel> data = [];
+
+  double priceorders = 0;
+  int totalCountItems = 0;
 
   /////////////////////////////////////////////////////////
   /// ADD Cart Function
@@ -77,5 +82,27 @@ class CartController extends GetxController {
   /////////////////////////////////////////////////////////
   /// View Cart Function
   ////////////////////////////////////////////////////////
-  view() {}
+  view() async {
+    statusRequest = StatusRequest.loading;
+    var response =
+        await cartData.viewCart(myServices.sharedPreferences.getString("id")!);
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        List dataresponse = response['datacart'];
+        Map dataResponseCountPrice = response['countprice'];
+        data.addAll(dataresponse.map((e) => CartModel.fromJson(e)));
+        totalCountItems = int.parse(dataResponseCountPrice['totalcount']);
+        priceorders = double.parse(dataResponseCountPrice['totalprice']);
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+    }
+  }
+
+  @override
+  void onInit() {
+    view();
+    super.onInit();
+  }
 }
