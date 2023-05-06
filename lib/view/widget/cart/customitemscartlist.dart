@@ -1,16 +1,25 @@
+// ignore_for_file: avoid_unnecessary_containers, sized_box_for_whitespace
+
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:ecommercecourse/linkapi.dart';
 import 'package:flutter/material.dart';
 import '../../../core/constant/color.dart';
-import '../../../core/constant/imageassets.dart';
 
 class CustomItemsCartList extends StatelessWidget {
   final String name;
   final String price;
   final String count;
+  final String imageName;
+  final void Function() onAdd;
+  final void Function() onRemove;
   const CustomItemsCartList({
     super.key,
     required this.name,
     required this.price,
     required this.count,
+    required this.imageName,
+    required this.onAdd,
+    required this.onRemove,
   });
 
   @override
@@ -21,10 +30,9 @@ class CustomItemsCartList extends StatelessWidget {
           children: [
             Expanded(
               flex: 2,
-              child: Image.asset(
-                AppImageAsset.logo,
-                height: 90,
-                fit: BoxFit.cover,
+              child: CachedNetworkImage(
+                imageUrl: "${AppLink.imageItems}/$imageName",
+                height: 80,
               ),
             ),
             Expanded(
@@ -51,7 +59,9 @@ class CustomItemsCartList extends StatelessWidget {
                   Container(
                     height: 35,
                     child: IconButton(
-                        onPressed: () {}, icon: const Icon(Icons.add)),
+                      onPressed: onAdd,
+                      icon: const Icon(Icons.add),
+                    ),
                   ),
                   Container(
                     height: 30,
@@ -65,7 +75,7 @@ class CustomItemsCartList extends StatelessWidget {
                   Container(
                     height: 25,
                     child: IconButton(
-                      onPressed: () {},
+                      onPressed: onRemove,
                       icon: const Icon(Icons.remove),
                     ),
                   ),
