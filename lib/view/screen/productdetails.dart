@@ -24,7 +24,6 @@ class ProductDetails extends StatelessWidget {
           ),
           color: AppColor.secondColor,
           onPressed: () {
-            controller.cartController.refreshPage();
             Get.toNamed(AppRoute.cart);
           },
           child: const Text(
