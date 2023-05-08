@@ -23,20 +23,34 @@ class HomePage extends StatelessWidget {
           child: ListView(
             children: [
               CustomAppBar(
+                myController: controller.search!,
+                onChanged: (val) {
+                  controller.checkSearch(val);
+                },
                 titleappbar: "find Product",
-                onPressedSearch: () {},
+                onPressedSearch: () {
+                  controller.onSearchItems();
+                },
                 onPressedIconFavorite: () {
                   Get.toNamed(AppRoute.myfavorite);
                 },
               ),
-              const CustomCartHome(
-                  title: "A Summer Surprise", body: "Cashback 20%"),
-              CustomTitleHome(title: "43".tr),
-              const CustomListCategoriesHome(),
-              CustomTitleHome(title: "44".tr),
-              const CustomListItemsHome(),
-              CustomTitleHome(title: "45".tr),
-              const CustomListItemsHome(),
+              controller.isSearch
+                  ? Container(
+                      child: Text("Search"),
+                    )
+                  : Column(
+                      children: [
+                        const CustomCartHome(
+                            title: "A Summer Surprise", body: "Cashback 20%"),
+                        CustomTitleHome(title: "43".tr),
+                        const CustomListCategoriesHome(),
+                        CustomTitleHome(title: "44".tr),
+                        const CustomListItemsHome(),
+                        CustomTitleHome(title: "45".tr),
+                        const CustomListItemsHome(),
+                      ],
+                    )
             ],
           ),
         ),

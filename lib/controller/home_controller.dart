@@ -2,6 +2,7 @@ import 'package:ecommercecourse/core/class/statusrequest.dart';
 import 'package:ecommercecourse/core/constant/routes.dart';
 import 'package:ecommercecourse/core/services/services.dart';
 import 'package:ecommercecourse/data/datasource/remote/home_data.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../core/functions/handlingdatacontroller.dart';
@@ -26,6 +27,21 @@ class HomeControllerImp extends HomeController {
   String? id;
   String? lang;
 
+  TextEditingController? search;
+  bool isSearch = false;
+
+  checkSearch(val) {
+    if (val == "") {
+      isSearch = false;
+    }
+    update();
+  }
+
+  onSearchItems() {
+    isSearch = true;
+    update();
+  }
+
   @override
   initialData() {
     lang = myServices.sharedPreferences.getString("lang");
@@ -35,6 +51,7 @@ class HomeControllerImp extends HomeController {
 
   @override
   void onInit() {
+    search = TextEditingController();
     initialData();
     getData();
     super.onInit();
