@@ -2,45 +2,29 @@ import 'package:ecommercecourse/core/class/statusrequest.dart';
 import 'package:ecommercecourse/core/constant/routes.dart';
 import 'package:ecommercecourse/core/services/services.dart';
 import 'package:ecommercecourse/data/datasource/remote/home_data.dart';
+import 'package:ecommercecourse/data/model/itemsmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../core/functions/handlingdatacontroller.dart';
 
-abstract class HomeController extends GetxController {
+abstract class HomeController extends SearchMixController {
   initialData();
   getData();
   goToItems(List categories, int selectedCat, String categoryid);
 }
 
 class HomeControllerImp extends HomeController {
-  HomeData homedata = HomeData(Get.find());
-  // StatusRequest statusRequest = StatusRequest.none;
-  late StatusRequest statusRequest;
+  MyServices myServices = Get.find();
+
   // List data = [];
   List categories = [];
   List items = [];
   //
-  MyServices myServices = Get.find();
 
   String? username;
   String? id;
   String? lang;
-
-  TextEditingController? search;
-  bool isSearch = false;
-
-  checkSearch(val) {
-    if (val == "") {
-      isSearch = false;
-    }
-    update();
-  }
-
-  onSearchItems() {
-    isSearch = true;
-    update();
-  }
 
   @override
   initialData() {
@@ -79,6 +63,51 @@ class HomeControllerImp extends HomeController {
       "categories": categories,
       "selectedcat": selectedCat,
       "catid": categoryid,
+    });
+  }
+}
+
+class SearchMixController extends GetxController {
+  //
+  HomeData homedata = HomeData(Get.find());
+  List<ItemsModel> listdata = [];
+  late StatusRequest statusRequest;
+  TextEditingController? search;
+  bool isSearch = false;
+  //
+
+  checkSearch(val) {
+    if (val == "") {
+      isSearch = false;
+    }
+    update();
+  }
+
+  onSearchItems() {
+    isSearch = true;
+    searchData();
+    update();
+  }
+
+  searchData() async {
+    statusRequest = StatusRequest.loading;
+    var response = await homedata.searchData(search!.text);
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        listdata.clear();
+        List responsedata = response['data'];
+        listdata.addAll(responsedata.map((e) => ItemsModel.fromJson(e)));
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    update();
+  }
+
+  goToProductDetails(itemsModel) {
+    Get.toNamed(AppRoute.productDetails, arguments: {
+      "itemsmodel": itemsModel,
     });
   }
 }

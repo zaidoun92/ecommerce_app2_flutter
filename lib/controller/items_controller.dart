@@ -1,7 +1,9 @@
+import 'package:ecommercecourse/controller/home_controller.dart';
 import 'package:ecommercecourse/core/constant/routes.dart';
 import 'package:ecommercecourse/core/services/services.dart';
 import 'package:ecommercecourse/data/datasource/remote/items_data.dart';
 import 'package:ecommercecourse/data/model/itemsmodel.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../core/class/statusrequest.dart';
@@ -14,7 +16,7 @@ abstract class ItemsController extends GetxController {
   goToProductDetails(ItemsModel itemsModel);
 }
 
-class ItemsControllerImp extends ItemsController {
+class ItemsControllerImp extends SearchMixController {
   ItemsData itemsData = ItemsData(Get.find());
   List categories = [];
   int? selectedCat;
@@ -26,11 +28,11 @@ class ItemsControllerImp extends ItemsController {
 
   @override
   void onInit() {
+    search = TextEditingController();
     intialData();
     super.onInit();
   }
 
-  @override
   intialData() {
     categories = Get.arguments['categories'];
     selectedCat = Get.arguments['selectedcat'];
@@ -38,7 +40,6 @@ class ItemsControllerImp extends ItemsController {
     getItems(catid!);
   }
 
-  @override
   changeCat(val, catval) {
     selectedCat = val;
     catid = catval;
@@ -46,7 +47,6 @@ class ItemsControllerImp extends ItemsController {
     update();
   }
 
-  @override
   getItems(categoryid) async {
     data.clear();
     statusRequest = StatusRequest.loading;
