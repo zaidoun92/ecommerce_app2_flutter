@@ -1,5 +1,8 @@
 import 'package:ecommercecourse/core/constant/routes.dart';
 import 'package:ecommercecourse/core/middleware/mymiddleware.dart';
+import 'package:ecommercecourse/view/screen/address/add.dart';
+import 'package:ecommercecourse/view/screen/address/addpart2.dart';
+import 'package:ecommercecourse/view/screen/address/view.dart';
 import 'package:ecommercecourse/view/screen/auth/forgetpassword/forgetpassword.dart';
 import 'package:ecommercecourse/view/screen/auth/login.dart';
 import 'package:ecommercecourse/view/screen/auth/forgetpassword/resetpassword.dart';
@@ -44,6 +47,12 @@ List<GetPage<dynamic>>? routes = [
   GetPage(name: AppRoute.productDetails, page: () => const ProductDetails()),
   GetPage(name: AppRoute.myfavorite, page: () => const MyFavorite()),
   GetPage(name: AppRoute.cart, page: () => const Cart()),
+
+  //Address
+  GetPage(name: AppRoute.addressview, page: () => const AddressView()),
+  GetPage(name: AppRoute.addressadd, page: () => const AddressAdd()),
+  GetPage(name: AppRoute.addressaddtwo, page: () => const AddressAddPartTwo()),
+  // GetPage(name: AppRoute.addressdelete, page: () => const AddressView()),
 ];
 
 

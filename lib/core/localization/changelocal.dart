@@ -1,6 +1,7 @@
 import 'package:ecommercecourse/core/constant/apptheme.dart';
 import 'package:ecommercecourse/core/services/services.dart';
 import 'package:flutter/material.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:get/get.dart';
 
 class LocaleController extends GetxController {
@@ -20,8 +21,29 @@ class LocaleController extends GetxController {
     Get.updateLocale(locale);
   }
 
+  requestPerLocation() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      return Get.snackbar("WARNING", "Please Enable GPS");
+    }
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        return Get.snackbar(
+            "WARNING", "Please Give Location Permission to APP");
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      return Get.snackbar("WARNING", "You can't use The App Without Location");
+    }
+  }
+
   @override
   void onInit() {
+    requestPerLocation();
     String? sharedPrefLang = myServices.sharedPreferences.getString("lang");
     if (sharedPrefLang == "ar") {
       language = const Locale("ar");
