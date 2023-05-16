@@ -1,11 +1,11 @@
 import 'package:ecommercecourse/core/constant/color.dart';
 import 'package:flutter/material.dart';
 
-class CustomButtonAuth extends StatelessWidget {
+class CustomButton extends StatelessWidget {
   final String text;
   final void Function()? onPressed;
 
-  const CustomButtonAuth({
+  const CustomButton({
     super.key,
     required this.text,
     this.onPressed,
@@ -14,21 +14,16 @@ class CustomButtonAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.only(top: 10),
+      margin: const EdgeInsets.only(top: 10, right: 20, left: 20),
       child: MaterialButton(
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(20),
-        ),
-        padding: const EdgeInsets.symmetric(vertical: 13),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
+        padding: const EdgeInsets.symmetric(vertical: 5),
         onPressed: onPressed,
         color: AppColor.primaryColor,
         textColor: Colors.white,
         child: Text(
           text,
-          style: const TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 16,
-          ),
+          style: const TextStyle(fontSize: 16),
         ),
       ),
     );

@@ -25,7 +25,7 @@ class AddAddressController extends GetxController {
   }
 
   goToPageAddDetailsAddress() {
-    Get.toNamed(AppRoute.addressaddtwo, arguments: {
+    Get.toNamed(AppRoute.addressadddetails, arguments: {
       "lat": lat.toString(),
       "lang": lang.toString(),
     });
