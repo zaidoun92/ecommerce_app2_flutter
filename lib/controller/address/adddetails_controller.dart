@@ -1,9 +1,17 @@
 import 'package:ecommercecourse/core/class/statusrequest.dart';
+import 'package:ecommercecourse/core/constant/routes.dart';
+import 'package:ecommercecourse/core/services/services.dart';
+import 'package:ecommercecourse/data/datasource/remote/address_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import '../../core/functions/handlingdatacontroller.dart';
 
 class AddAddressDetailsController extends GetxController {
-  StatusRequest statusRequest = StatusRequest.loading;
+  StatusRequest statusRequest = StatusRequest.none;
+  //
+  AddressData addressData = AddressData(Get.find());
+  MyServices myServices = Get.find();
+  //
 
   TextEditingController? name;
   TextEditingController? city;
@@ -24,22 +32,26 @@ class AddAddressDetailsController extends GetxController {
     print("lang :::::::: $lang ");
   }
 
-  addDetails() async {
+  addAddress() async {
     statusRequest = StatusRequest.loading;
-    var response = await favoriteData.addFavorite(
-        myServices.sharedPreferences.getString("id")!, itemsId);
+    update();
+    var response = await addressData.addData(
+      myServices.sharedPreferences.getString("id")!,
+      name!.text,
+      city!.text,
+      street!.text,
+      lat!,
+      lang!,
+    );
     statusRequest = handlingData(response);
     if (StatusRequest.success == statusRequest) {
       if (response['status'] == "success") {
-        Get.rawSnackbar(
-          title: "46".tr,
-          messageText: Text("47".tr),
-        );
-        // data.addAll(response['data']);
+        Get.offAllNamed(AppRoute.homePage);
       } else {
         statusRequest = StatusRequest.failure;
       }
     }
+    update();
   }
 
   @override
