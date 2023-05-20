@@ -12,6 +12,9 @@ class AddressViewController extends GetxController {
   MyServices myServices = Get.find();
   List<AddressModel> data = [];
 
+  ////////////////////////////////////////////////////////////
+  /// View The Data of Location
+  ////////////////////////////////////////////////////////////
   getData() async {
     statusRequest = StatusRequest.loading;
     update();
@@ -19,17 +22,29 @@ class AddressViewController extends GetxController {
         .getData(myServices.sharedPreferences.getString("id")!);
     statusRequest = handlingData(response);
 
-    print("============ $response ");
+    // print("============ $response ");
 
     if (StatusRequest.success == statusRequest) {
       // Start Backend
       if (response['status'] == "success") {
         List listdata = response['data'];
         data.addAll(listdata.map((e) => AddressModel.fromJson(e)));
+        if (data.isEmpty) {
+          statusRequest = StatusRequest.failure;
+        }
       } else {
         statusRequest = StatusRequest.failure;
       }
     }
+    update();
+  }
+
+  ////////////////////////////////////////////////////////////
+  /// View The Data of Location
+  ////////////////////////////////////////////////////////////
+  deleteAddress(String addressid) async {
+    addressData.deleteData(addressid);
+    data.removeWhere((element) => element.addressId == addressid);
     update();
   }
 
