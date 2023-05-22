@@ -1,15 +1,20 @@
 import 'package:ecommercecourse/data/datasource/remote/cart_data.dart';
 import 'package:ecommercecourse/data/model/cartmodel.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../core/class/statusrequest.dart';
 import '../core/functions/handlingdatacontroller.dart';
 import '../core/services/services.dart';
 
 class CartController extends GetxController {
+  TextEditingController? controllerCoupon;
+
   CartData cartData = CartData(Get.find());
+
   late StatusRequest statusRequest;
+
   MyServices myServices = Get.find();
+
   List<CartModel> data = [];
 
   double priceorders = 0;
@@ -103,6 +108,7 @@ class CartController extends GetxController {
 
   @override
   void onInit() {
+    controllerCoupon = TextEditingController();
     view();
     super.onInit();
   }

@@ -28,8 +28,8 @@ class AddAddressDetailsController extends GetxController {
     lat = Get.arguments['lat'];
     lang = Get.arguments['lang'];
 
-    print("Lat :::::::: $lat ");
-    print("lang :::::::: $lang ");
+    // print("Lat :::::::: $lat ");
+    // print("lang :::::::: $lang ");
   }
 
   addAddress() async {
