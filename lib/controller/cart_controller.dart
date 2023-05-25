@@ -1,5 +1,6 @@
 import 'package:ecommercecourse/data/datasource/remote/cart_data.dart';
 import 'package:ecommercecourse/data/model/cartmodel.dart';
+import 'package:ecommercecourse/data/model/couponmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../core/class/statusrequest.dart';
@@ -11,7 +12,12 @@ class CartController extends GetxController {
 
   CartData cartData = CartData(Get.find());
 
+  int? discountcoupon = 0;
+  String? couponname;
+
   late StatusRequest statusRequest;
+
+  CouponModel? couponModel;
 
   MyServices myServices = Get.find();
 
@@ -64,6 +70,36 @@ class CartController extends GetxController {
       }
     }
     update();
+  }
+
+  /////////////////////////////////////////////////////////
+  /// add coupon to deleivery
+  ////////////////////////////////////////////////////////
+  checkcoupon() async {
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await cartData.checkCoupon(controllerCoupon!.text);
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        Map<String, dynamic> datacoupon = response['data'];
+        couponModel = CouponModel.fromJson(datacoupon);
+        discountcoupon = int.parse(couponModel!.couponDiscount!);
+        couponname = couponModel!.couponName;
+      } else {
+        // statusRequest = StatusRequest.failure;
+        discountcoupon = 0;
+        couponname = null;
+      }
+    }
+    update();
+  }
+
+  /////////////////////////////////////////////////////////
+  /// get total price after discount
+  ////////////////////////////////////////////////////////
+  getTotalPrice() {
+    return (priceorders - (priceorders * discountcoupon! / 100));
   }
 
   /////////////////////////////////////////////////////////
