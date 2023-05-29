@@ -1,4 +1,7 @@
+// ignore_for_file: avoid_unnecessary_containers
+
 import 'package:ecommercecourse/controller/cart_controller.dart';
+import 'package:ecommercecourse/core/constant/routes.dart';
 import 'package:ecommercecourse/view/widget/cart/custombuttoncoupon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -168,7 +171,12 @@ class BottomNavgationBarCart extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 10),
-          CustomButtonCart(textbutton: "Pleace Order", onPressed: () {}),
+          CustomButtonCart(
+            textbutton: "Order",
+            onPressed: () {
+              Get.toNamed(AppRoute.checkout);
+            },
+          ),
         ],
       ),
     );

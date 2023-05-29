@@ -12,6 +12,7 @@ import 'package:ecommercecourse/view/screen/auth/success_signup.dart';
 import 'package:ecommercecourse/view/screen/auth/forgetpassword/verifycode.dart';
 import 'package:ecommercecourse/view/screen/auth/verifycodesignup.dart';
 import 'package:ecommercecourse/view/screen/cart.dart';
+import 'package:ecommercecourse/view/screen/checkout.dart';
 import 'package:ecommercecourse/view/screen/homescreen.dart';
 import 'package:ecommercecourse/view/screen/items.dart';
 import 'package:ecommercecourse/view/screen/language.dart';
@@ -53,6 +54,7 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
       name: AppRoute.addressadddetails, page: () => const AddressAddDetails()),
   // GetPage(name: AppRoute.addressdelete, page: () => const AddressView()),
+  GetPage(name: AppRoute.checkout, page: () => const CheckOut()),
 ];
 
 

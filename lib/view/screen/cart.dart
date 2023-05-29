@@ -5,7 +5,6 @@ import 'package:ecommercecourse/view/widget/cart/custom_bottom_navgationbar_cart
 import 'package:ecommercecourse/view/widget/cart/topcartcart.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../widget/cart/appbarcart.dart';
 import '../widget/cart/customitemscartlist.dart';
 
 class Cart extends StatelessWidget {
@@ -15,6 +14,9 @@ class Cart extends StatelessWidget {
   Widget build(BuildContext context) {
     CartController cartController = Get.put(CartController());
     return Scaffold(
+      appBar: AppBar(
+        title: const Text("My Cart"),
+      ),
       bottomNavigationBar: GetBuilder<CartController>(
         builder: (controller) => BottomNavgationBarCart(
           controllerCoupon: controller.controllerCoupon!,
@@ -32,7 +34,6 @@ class Cart extends StatelessWidget {
           statusRequest: controller.statusRequest,
           widget: ListView(
             children: [
-              const TopAppBarCart(title: "My Cart"),
               const SizedBox(height: 10),
               TopCartCart(
                   message:

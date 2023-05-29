@@ -3,9 +3,21 @@ import 'package:flutter/material.dart';
 
 ThemeData themeEnglish = ThemeData(
   fontFamily: "PlayfairDisplay",
-  appBarTheme: const AppBarTheme(color: AppColor.primaryColor),
+  appBarTheme: AppBarTheme(
+    centerTitle: true,
+    elevation: 0,
+    iconTheme: const IconThemeData(color: AppColor.primaryColor),
+    titleTextStyle: const TextStyle(
+      color: AppColor.primaryColor,
+      fontWeight: FontWeight.bold,
+      fontFamily: "Cairo",
+      fontSize: 25,
+    ),
+    backgroundColor: Colors.grey[50],
+  ),
   floatingActionButtonTheme: const FloatingActionButtonThemeData(
-      backgroundColor: AppColor.primaryColor),
+    backgroundColor: AppColor.primaryColor,
+  ),
   textTheme: const TextTheme(
     headline1: TextStyle(
       fontWeight: FontWeight.bold,
