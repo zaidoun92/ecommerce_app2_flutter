@@ -1,14 +1,13 @@
 // ignore_for_file: avoid_unnecessary_containers
 
 import 'package:ecommercecourse/controller/cart_controller.dart';
-import 'package:ecommercecourse/core/constant/routes.dart';
 import 'package:ecommercecourse/view/widget/cart/custombuttoncoupon.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/constant/color.dart';
 import 'buttoncart.dart';
 
-class BottomNavgationBarCart extends StatelessWidget {
+class BottomNavgationBarCart extends GetView<CartController> {
   final String price;
   final String discount;
   final String totalPrice;
@@ -174,7 +173,7 @@ class BottomNavgationBarCart extends StatelessWidget {
           CustomButtonCart(
             textbutton: "Order",
             onPressed: () {
-              Get.toNamed(AppRoute.checkout);
+              controller.goToPageCheckout();
             },
           ),
         ],

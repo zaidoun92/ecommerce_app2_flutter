@@ -16,7 +16,7 @@ class CheckOut extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(CheckoutController());
+    CheckoutController controller = Get.put(CheckoutController());
     return Scaffold(
       appBar: AppBar(
         title: const Text('Checkout'),
@@ -26,7 +26,9 @@ class CheckOut extends StatelessWidget {
         child: MaterialButton(
           color: AppColor.secondColor,
           textColor: Colors.white,
-          onPressed: () {},
+          onPressed: () {
+            controller.checkout();
+          },
           child: const Text(
             "Checkout",
             style: TextStyle(
