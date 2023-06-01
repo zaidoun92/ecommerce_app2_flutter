@@ -107,6 +107,7 @@ class CartController extends GetxController {
         discountcoupon = 0;
         couponname = null;
         couponid = null;
+        Get.snackbar("WARRNING", "Coupon not vaild");
       }
     }
     update();
