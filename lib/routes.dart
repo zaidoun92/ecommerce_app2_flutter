@@ -17,6 +17,8 @@ import 'package:ecommercecourse/view/screen/homescreen.dart';
 import 'package:ecommercecourse/view/screen/items.dart';
 import 'package:ecommercecourse/view/screen/language.dart';
 import 'package:ecommercecourse/view/screen/onboarding.dart';
+import 'package:ecommercecourse/view/screen/orders/archive.dart';
+import 'package:ecommercecourse/view/screen/orders/pending.dart';
 import 'package:ecommercecourse/view/screen/productdetails.dart';
 import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'view/screen/myfavorite.dart';
@@ -55,6 +57,9 @@ List<GetPage<dynamic>>? routes = [
       name: AppRoute.addressadddetails, page: () => const AddressAddDetails()),
   // GetPage(name: AppRoute.addressdelete, page: () => const AddressView()),
   GetPage(name: AppRoute.checkout, page: () => const CheckOut()),
+  //Orders
+  GetPage(name: AppRoute.orderspending, page: () => const OrdersPending()),
+  GetPage(name: AppRoute.archive, page: () => const Archive()),
 ];
 
 
