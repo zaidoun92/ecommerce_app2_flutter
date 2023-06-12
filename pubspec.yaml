@@ -81,6 +81,7 @@ dependencies:
   flutter_svg: ^1.1.6
   flutter_otp_text_field: ^1.1.1
   lottie: ^2.3.0
+  flutter_ringtone_player: ^3.2.0
 
 dev_dependencies:
   flutter_test:

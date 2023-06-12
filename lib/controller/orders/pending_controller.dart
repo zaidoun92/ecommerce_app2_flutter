@@ -15,6 +15,34 @@ class OrdersPendingController extends GetxController {
 
   MyServices myServices = Get.find();
 
+  String printOrderType(String val) {
+    if (val == "0") {
+      return "delivery";
+    } else {
+      return "Recive";
+    }
+  }
+
+  String printPaymentMethod(String val) {
+    if (val == "0") {
+      return "Cash On Delivery";
+    } else {
+      return "Payment Card";
+    }
+  }
+
+  String printOrdersStatus(String val) {
+    if (val == "0") {
+      return "Pending Approval";
+    } else if (val == "1") {
+      return "The Order Being Prepared";
+    } else if (val == "2") {
+      return "On the way";
+    } else {
+      return "Archive";
+    }
+  }
+
   /////////////////////////////////////////////////////////
   /// Remove Cart Function
   ////////////////////////////////////////////////////////
@@ -37,6 +65,10 @@ class OrdersPendingController extends GetxController {
       }
     }
     update();
+  }
+
+  refreshOrder() {
+    getOrders();
   }
 
   @override

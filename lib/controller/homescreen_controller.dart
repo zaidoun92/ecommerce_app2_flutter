@@ -1,4 +1,5 @@
 import 'package:ecommercecourse/view/screen/home.dart';
+import 'package:ecommercecourse/view/screen/notification.dart';
 import 'package:ecommercecourse/view/screen/settings.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -12,14 +13,7 @@ class HomeScreenControllerImp extends HomeScreenController {
 
   List<Widget> listPage = [
     const HomePage(),
-    Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: const [
-        Center(
-          child: Text("Settings"),
-        ),
-      ],
-    ),
+    const NotificationView(),
     Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: const [
