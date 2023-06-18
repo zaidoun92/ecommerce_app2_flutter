@@ -1,11 +1,11 @@
 // ignore_for_file: avoid_unnecessary_containers
-
 import 'package:ecommercecourse/controller/settings_controller.dart';
 import 'package:ecommercecourse/core/constant/color.dart';
 import 'package:ecommercecourse/core/constant/imageassets.dart';
 import 'package:ecommercecourse/core/constant/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Settings extends StatelessWidget {
   const Settings({super.key});
@@ -65,7 +65,7 @@ class Settings extends StatelessWidget {
                   ),
                   ListTile(
                     onTap: () {
-                      Get.toNamed(AppRoute.addressview);
+                      Get.toNamed(AppRoute.ordersarchive);
                     },
                     title: const Text('Archive'),
                     trailing: const Icon(Icons.card_travel),
@@ -83,7 +83,9 @@ class Settings extends StatelessWidget {
                     trailing: const Icon(Icons.help_outline_rounded),
                   ),
                   ListTile(
-                    onTap: () {},
+                    onTap: () async {
+                      await launchUrl(Uri.parse("tel:+201019872113"));
+                    },
                     title: const Text('Contact us'),
                     trailing: const Icon(Icons.phone_callback_outlined),
                   ),

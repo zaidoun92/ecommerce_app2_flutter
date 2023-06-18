@@ -1,14 +1,14 @@
+import 'package:ecommercecourse/controller/orders/archive_controller.dart';
 import 'package:ecommercecourse/core/constant/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:jiffy/jiffy.dart';
-import '../../../controller/orders/pending_controller.dart';
 import '../../../core/constant/color.dart';
 import '../../../data/model/ordersmodel.dart';
 
-class CardOrdersList extends GetView<OrdersPendingController> {
+class CardOrdersListArchive extends GetView<OrdersArchiveController> {
   final OrdersModel listdata;
-  const CardOrdersList({
+  const CardOrdersListArchive({
     super.key,
     required this.listdata,
   });
@@ -73,16 +73,6 @@ class CardOrdersList extends GetView<OrdersPendingController> {
                   textColor: AppColor.secondColor,
                   child: const Text("Details"),
                 ),
-                const SizedBox(width: 10),
-                if (listdata.ordersStatus == "0")
-                  MaterialButton(
-                    onPressed: () {
-                      controller.deleteOrder(listdata.ordersId!);
-                    },
-                    color: AppColor.thirdColor,
-                    textColor: AppColor.secondColor,
-                    child: const Text("Delete"),
-                  ),
               ],
             ),
           ],

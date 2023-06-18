@@ -1,13 +1,13 @@
 import 'package:ecommercecourse/core/class/statusrequest.dart';
 import 'package:ecommercecourse/core/services/services.dart';
-import 'package:ecommercecourse/data/datasource/remote/orders/pending_data.dart';
+import 'package:ecommercecourse/data/datasource/remote/orders/archive_data.dart';
 import 'package:ecommercecourse/data/model/ordersmodel.dart';
 import 'package:get/get.dart';
 
 import '../../core/functions/handlingdatacontroller.dart';
 
-class OrdersPendingController extends GetxController {
-  OrdersPendingData ordersPendingData = OrdersPendingData(Get.find());
+class OrdersArchiveController extends GetxController {
+  OrdersArchiveData ordersArchiveData = OrdersArchiveData(Get.find());
 
   List<OrdersModel> data = [];
 
@@ -52,7 +52,7 @@ class OrdersPendingController extends GetxController {
     data.clear();
     statusRequest = StatusRequest.loading;
     update();
-    var response = await ordersPendingData
+    var response = await ordersArchiveData
         .getData(myServices.sharedPreferences.getString("id")!);
 
     print("====================== Controller $response");
@@ -62,27 +62,6 @@ class OrdersPendingController extends GetxController {
       if (response['status'] == "success") {
         List listdata = response['data'];
         data.addAll(listdata.map((e) => OrdersModel.fromJson(e)));
-      } else {
-        statusRequest = StatusRequest.failure;
-      }
-    }
-    update();
-  }
-
-  /////////////////////////////////////////////////////////
-  /// Remove Cart Function
-  ////////////////////////////////////////////////////////
-  deleteOrder(String orderid) async {
-    statusRequest = StatusRequest.loading;
-    update();
-    var response = await ordersPendingData.deleteData(orderid);
-
-    print("====================== Controller $response");
-
-    statusRequest = handlingData(response);
-    if (StatusRequest.success == statusRequest) {
-      if (response['status'] == "success") {
-        refreshOrder();
       } else {
         statusRequest = StatusRequest.failure;
       }

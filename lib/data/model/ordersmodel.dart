@@ -1,5 +1,3 @@
-// ignore_for_file: unnecessary_this
-
 class OrdersModel {
   String? ordersId;
   String? ordersUsersid;
@@ -12,6 +10,13 @@ class OrdersModel {
   String? ordersPaymentmethod;
   String? ordersStatus;
   String? ordersDatetime;
+  String? addressId;
+  String? addressUsersid;
+  String? addressName;
+  String? addressCity;
+  String? addressStreet;
+  String? addressLat;
+  String? addressLang;
 
   OrdersModel(
       {this.ordersId,
@@ -24,7 +29,14 @@ class OrdersModel {
       this.ordersCoupon,
       this.ordersPaymentmethod,
       this.ordersStatus,
-      this.ordersDatetime});
+      this.ordersDatetime,
+      this.addressId,
+      this.addressUsersid,
+      this.addressName,
+      this.addressCity,
+      this.addressStreet,
+      this.addressLat,
+      this.addressLang});
 
   OrdersModel.fromJson(Map<String, dynamic> json) {
     ordersId = json['orders_id'];
@@ -38,21 +50,35 @@ class OrdersModel {
     ordersPaymentmethod = json['orders_paymentmethod'];
     ordersStatus = json['orders_status'];
     ordersDatetime = json['orders_datetime'];
+    addressId = json['address_id'];
+    addressUsersid = json['address_usersid'];
+    addressName = json['address_name'];
+    addressCity = json['address_city'];
+    addressStreet = json['address_street'];
+    addressLat = json['address_lat'];
+    addressLang = json['address_lang'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['orders_id'] = this.ordersId;
-    data['orders_usersid'] = this.ordersUsersid;
-    data['orders_address'] = this.ordersAddress;
-    data['orders_type'] = this.ordersType;
-    data['orders_pricedelivery'] = this.ordersPricedelivery;
-    data['orders_price'] = this.ordersPrice;
-    data['orders_totalprice'] = this.ordersTotalprice;
-    data['orders_coupon'] = this.ordersCoupon;
-    data['orders_paymentmethod'] = this.ordersPaymentmethod;
-    data['orders_status'] = this.ordersStatus;
-    data['orders_datetime'] = this.ordersDatetime;
+    data['orders_id'] = ordersId;
+    data['orders_usersid'] = ordersUsersid;
+    data['orders_address'] = ordersAddress;
+    data['orders_type'] = ordersType;
+    data['orders_pricedelivery'] = ordersPricedelivery;
+    data['orders_price'] = ordersPrice;
+    data['orders_totalprice'] = ordersTotalprice;
+    data['orders_coupon'] = ordersCoupon;
+    data['orders_paymentmethod'] = ordersPaymentmethod;
+    data['orders_status'] = ordersStatus;
+    data['orders_datetime'] = ordersDatetime;
+    data['address_id'] = addressId;
+    data['address_usersid'] = addressUsersid;
+    data['address_name'] = addressName;
+    data['address_city'] = addressCity;
+    data['address_street'] = addressStreet;
+    data['address_lat'] = addressLat;
+    data['address_lang'] = addressLang;
     return data;
   }
 }
