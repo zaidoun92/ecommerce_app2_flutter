@@ -1,4 +1,5 @@
 import 'package:ecommercecourse/core/class/statusrequest.dart';
+import 'package:ecommercecourse/core/constant/routes.dart';
 import 'package:ecommercecourse/core/services/services.dart';
 import 'package:ecommercecourse/data/datasource/remote/orders/archive_data.dart';
 import 'package:ecommercecourse/data/model/ordersmodel.dart';
@@ -62,6 +63,29 @@ class OrdersArchiveController extends GetxController {
       if (response['status'] == "success") {
         List listdata = response['data'];
         data.addAll(listdata.map((e) => OrdersModel.fromJson(e)));
+      } else {
+        statusRequest = StatusRequest.failure;
+      }
+    }
+    update();
+  }
+
+  submitRating(String ordersid, double rating, String commit) async {
+    data.clear();
+    statusRequest = StatusRequest.loading;
+    update();
+    var response = await ordersArchiveData.rating(
+      ordersid,
+      rating.toString(),
+      commit,
+    );
+
+    print("====================== Controller $response");
+
+    statusRequest = handlingData(response);
+    if (StatusRequest.success == statusRequest) {
+      if (response['status'] == "success") {
+        getOrders();
       } else {
         statusRequest = StatusRequest.failure;
       }
