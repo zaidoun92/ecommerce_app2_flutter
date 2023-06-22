@@ -52,27 +52,24 @@ class CustomListItems extends GetView<ItemsControllerImp> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  //   children: [
-                  //     const Text(
-                  //       "Rating 3.5",
-                  //       textAlign: TextAlign.center,
-                  //     ),
-                  //     Container(
-                  //       alignment: Alignment.bottomCenter,
-                  //       height: 20,
-                  //       child: Row(
-                  //         children: [
-                  //           ...List.generate(
-                  //             5,
-                  //             (index) => const Icon(Icons.star, size: 15),
-                  //           ),
-                  //         ],
-                  //       ),
-                  //     ),
-                  //   ],
-                  // ),
+                  Row(
+                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(top: 5),
+                        child: const Icon(
+                          Icons.timer_sharp,
+                          color: AppColor.grey,
+                        ),
+                      ),
+                      const SizedBox(width: 4),
+                      Text(
+                        "${controller.deliverytime} Mints",
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(fontFamily: "sans"),
+                      ),
+                    ],
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

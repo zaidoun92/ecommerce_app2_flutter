@@ -43,8 +43,9 @@ class HomePage extends StatelessWidget {
                   ? Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const CustomCartHome(
-                            title: "A Summer Surprise", body: "Cashback 20%"),
+                        CustomCartHome(
+                            title: controller.titleHomeCard,
+                            body: controller.bodyHomeCard),
                         CustomTitleHome(title: "43".tr),
                         const CustomListCategoriesHome(),
                         CustomTitleHome(title: "44".tr),

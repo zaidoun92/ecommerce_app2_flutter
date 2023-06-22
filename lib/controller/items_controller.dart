@@ -18,16 +18,24 @@ abstract class ItemsController extends GetxController {
 
 class ItemsControllerImp extends SearchMixController {
   ItemsData itemsData = ItemsData(Get.find());
+
   List categories = [];
+
   int? selectedCat;
+
   String? catid;
+
   List data = [];
+
   late StatusRequest statusRequest;
+
+  String deliverytime = "";
 
   MyServices myServices = Get.find();
 
   @override
   void onInit() {
+    deliverytime = myServices.sharedPreferences.getString("deliverytime")!;
     search = TextEditingController();
     intialData();
     super.onInit();

@@ -20,11 +20,17 @@ class HomeControllerImp extends HomeController {
   // List data = [];
   List categories = [];
   List items = [];
+  List settingsdata = [];
   //
 
   String? username;
   String? id;
   String? lang;
+
+  //
+  String titleHomeCard = "";
+  String bodyHomeCard = "";
+  String deliveryTime = "";
 
   @override
   initialData() {
@@ -44,12 +50,29 @@ class HomeControllerImp extends HomeController {
   @override
   getData() async {
     statusRequest = StatusRequest.loading;
+
     var response = await homedata.getData();
+
     statusRequest = handlingData(response);
+
     if (StatusRequest.success == statusRequest) {
+      //
       if (response['status'] == "success") {
+        //
         categories.addAll(response['categories']['data']);
+
         items.addAll(response['items']['data']);
+
+        settingsdata.addAll(response['settings']['data']);
+
+        titleHomeCard = settingsdata[0]['settings_titlehome'];
+
+        bodyHomeCard = settingsdata[0]['settings_bodyhome'];
+
+        deliveryTime = settingsdata[0]['settings_deliverytime'];
+
+        myServices.sharedPreferences.setString("deliverytime", deliveryTime);
+        //
       } else {
         statusRequest = StatusRequest.failure;
       }

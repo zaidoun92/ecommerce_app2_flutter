@@ -50,27 +50,27 @@ class CustomListItemsOffer extends GetView<OffersController> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Rating 3.5",
-                        textAlign: TextAlign.center,
-                      ),
-                      Container(
-                        alignment: Alignment.bottomCenter,
-                        height: 20,
-                        child: Row(
-                          children: [
-                            ...List.generate(
-                              5,
-                              (index) => const Icon(Icons.star, size: 15),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  //   children: [
+                  //     const Text(
+                  //       "Rating 3.5",
+                  //       textAlign: TextAlign.center,
+                  //     ),
+                  //     Container(
+                  //       alignment: Alignment.bottomCenter,
+                  //       height: 20,
+                  //       child: Row(
+                  //         children: [
+                  //           ...List.generate(
+                  //             5,
+                  //             (index) => const Icon(Icons.star, size: 15),
+                  //           ),
+                  //         ],
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [

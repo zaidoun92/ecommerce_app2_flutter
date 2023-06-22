@@ -48,14 +48,14 @@ class Settings extends StatelessWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  ListTile(
-                    // onTap: () {},
-                    title: const Text('Disable Notification'),
-                    trailing: Switch(
-                      value: true,
-                      onChanged: (value) {},
-                    ),
-                  ),
+                  // ListTile(
+                  //   // onTap: () {},
+                  //   title: const Text('Disable Notification'),
+                  //   trailing: Switch(
+                  //     value: true,
+                  //     onChanged: (value) {},
+                  //   ),
+                  // ),
                   ListTile(
                     onTap: () {
                       Get.toNamed(AppRoute.orderspending);
