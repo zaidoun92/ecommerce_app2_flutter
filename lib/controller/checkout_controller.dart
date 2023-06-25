@@ -45,6 +45,10 @@ class CheckoutController extends GetxController {
     var response = await addressData
         .getData(myServices.sharedPreferences.getString("id")!);
 
+    // ignore: avoid_print
+    print(
+        "==============================zzzzzzzz $response zzzzzzzz==============================");
+
     statusRequest = handlingData(response);
 
     if (StatusRequest.success == statusRequest) {
@@ -52,6 +56,7 @@ class CheckoutController extends GetxController {
       if (response['status'] == "success") {
         List listdata = response['data'];
         dataaddress.addAll(listdata.map((e) => AddressModel.fromJson(e)));
+        addressid = dataaddress[0].addressId.toString();
       } else {
         statusRequest = StatusRequest.failure;
       }
@@ -65,6 +70,9 @@ class CheckoutController extends GetxController {
     }
     if (deliveryType == null) {
       return Get.snackbar("Error", "Please select order type");
+    }
+    if (dataaddress.isEmpty) {
+      return Get.snackbar("ERROR", "Please select Shipping Address");
     }
     statusRequest = StatusRequest.loading;
     update();

@@ -4,6 +4,7 @@ import 'package:ecommercecourse/controller/checkout_controller.dart';
 import 'package:ecommercecourse/core/class/handlingdataview.dart';
 import 'package:ecommercecourse/core/constant/color.dart';
 import 'package:ecommercecourse/core/constant/imageassets.dart';
+import 'package:ecommercecourse/core/constant/routes.dart';
 import 'package:ecommercecourse/view/widget/checkout/cardpaymentmethod.dart';
 import 'package:ecommercecourse/view/widget/checkout/cardshippingaddress.dart';
 import 'package:flutter/material.dart';
@@ -113,14 +114,33 @@ class CheckOut extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        "Shipping Addres",
-                        style: TextStyle(
-                          color: AppColor.secondColor,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
+                      if (controller.dataaddress.isNotEmpty)
+                        const Text(
+                          "Shipping Address",
+                          style: TextStyle(
+                            color: AppColor.secondColor,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
                         ),
-                      ),
+                      if (controller.dataaddress.isEmpty)
+                        InkWell(
+                          onTap: () {
+                            Get.toNamed(AppRoute.addressadd);
+                          },
+                          child: Container(
+                            child: const Center(
+                              child: Text(
+                                "Please Add Shipping Address \n Click here",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                  color: AppColor.primaryColor,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       const SizedBox(height: 10),
                       ...List.generate(
                         controller.dataaddress.length,
